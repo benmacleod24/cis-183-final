@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
         database = new Database(this);
 
         // Example: How to get a user by id.
-        database.users.getUserById(1);
+        //database.users.getUserById(1);
     }
 }

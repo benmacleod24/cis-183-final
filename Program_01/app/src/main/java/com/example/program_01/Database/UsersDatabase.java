@@ -51,7 +51,6 @@ public class UsersDatabase
         return null;
     }
 
-
     public void create(String email, String password)
     {
         // Predefined query for inserting into the users database.
@@ -62,5 +61,6 @@ public class UsersDatabase
 
         // Execute insert query.
         db.execSQL(query + "'"+ email +"','" + password + "');");
+        db.close();
     }
 }
