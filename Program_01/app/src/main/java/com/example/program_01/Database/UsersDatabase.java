@@ -9,25 +9,26 @@ import com.example.program_01.Models.User;
 
 public class UsersDatabase
 {
+    // The database instance for this clas.
     Database ctx;
 
-    public UsersDatabase(Database ctx)
+    public UsersDatabase(Context _ctx)
     {
-        this.ctx = ctx;
+        // Create the database instance for user in this class.
+        ctx = new Database(_ctx);
     }
 
-    public void create()
+    // Static method for creating classes.
+    public static void create(SQLiteDatabase _db)
     {
         final String query = "CREATE TABLE " + DatabaseVaribles.USER_TABLE + " (email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL);";
-        SQLiteDatabase db = ctx.getReadableDatabase();
-        db.execSQL(query);
+        _db.execSQL(query);
     }
 
-    public void clean()
+    public static void clean(SQLiteDatabase _db)
     {
         final String query = "DROP TABLE " + DatabaseVaribles.USER_TABLE + ";";
-        SQLiteDatabase db = ctx.getReadableDatabase();
-        db.execSQL(query);
+        _db.execSQL(query);
     }
 
     @SuppressLint("Range")
@@ -48,6 +49,7 @@ public class UsersDatabase
         }
 
         // Return null here.
+        db.close();
         return null;
     }
 

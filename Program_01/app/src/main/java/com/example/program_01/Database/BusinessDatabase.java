@@ -1,6 +1,7 @@
 package com.example.program_01.Database;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -14,26 +15,23 @@ public class BusinessDatabase
 {
     Database ctx;
 
-    public BusinessDatabase(Database c)
+    public BusinessDatabase(Context c)
     {
-        ctx = c;
+        // Create new database instance here.
+        ctx = new Database(c);
     }
 
-    public void create(SQLiteDatabase db)
+    public static void create(SQLiteDatabase db)
     {
-        Log.d("Database", ctx.getDatabaseName());
-        //SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
         //ORDER: email -> password -> name -> number
         db.execSQL("CREATE TABLE " + DatabaseVaribles.BUSINESS_TABLE + " (email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL, name TEXT NOT NULL, number TEXT NOT NULL);");
-        db.close(); //CLOSE
+        Log.d("DEBUG", "Created business table");
     }
 
-    public void clean()
+    public static void clean(SQLiteDatabase db)
     {
-        SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
         //Drop Business table
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseVaribles.BUSINESS_TABLE + ";");
-        db.close(); //CLOSE
     }
 
     @SuppressLint("Range")

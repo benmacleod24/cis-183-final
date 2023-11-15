@@ -101,7 +101,7 @@ public class CreateBusiness extends AppCompatActivity
                         tv_j_cb_emailError.setVisibility(View.INVISIBLE); //Hide error (is unique)
                         //make new Business
                         Business b = new Business(email, password, name, number);
-                        database.businesses.createBusiness(b); //Add that business to the businesses table in our database
+                        //database.businesses.createBusiness(b); //Add that business to the businesses table in our database
 
                         //LOG IN AND GO TO HOME PAGE
                     }

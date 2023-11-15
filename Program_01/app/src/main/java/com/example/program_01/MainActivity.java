@@ -11,13 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.program_01.Database.Database;
+import com.example.program_01.Database.UsersDatabase;
 import com.example.program_01.Models.Business;
+import com.example.program_01.Models.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
+    UsersDatabase usersDb;
+
     //GUI Stuff
     EditText et_j_email;
     EditText et_j_password;
@@ -43,6 +47,9 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        usersDb = new UsersDatabase(this);
+
         //Connect GUI
         et_j_email = findViewById(R.id.et_v_email);
         et_j_password = findViewById(R.id.et_v_password);
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity
 
         //Make ArrayList and fill data from database into it
         listOfBusinesses = new ArrayList<Business>();
-        listOfBusinesses = database.businesses.getAllBusinesses();
+        //listOfBusinesses = database.businesses.getAllBusinesses();
         //logBusinesses(); //For testing
 
         //Intent Stuff
