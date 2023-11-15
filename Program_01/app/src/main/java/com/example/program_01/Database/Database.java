@@ -12,15 +12,16 @@ public class Database extends SQLiteOpenHelper
     public Database(Context ctx)
     {
         super(ctx, DatabaseVaribles.DB_NAME, null, DatabaseVaribles.DB_VERSION);
-        users = new UsersDatabase(this);
+        //users = new UsersDatabase(this);
         businesses = new BusinessDatabase(this);
+        //businesses.setCtx(this);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-        users.create();
-        businesses.create();
+        businesses.create(this.getWritableDatabase());
+        //users.create();
     }
 
     @Override

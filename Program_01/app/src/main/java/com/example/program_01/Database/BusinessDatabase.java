@@ -3,6 +3,7 @@ package com.example.program_01.Database;
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.program_01.Models.Business;
 
@@ -18,9 +19,10 @@ public class BusinessDatabase
         ctx = c;
     }
 
-    public void create()
+    public void create(SQLiteDatabase db)
     {
-        SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
+        Log.d("Database", ctx.getDatabaseName());
+        //SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
         //ORDER: email -> password -> name -> number
         db.execSQL("CREATE TABLE " + DatabaseVaribles.BUSINESS_TABLE + " (email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL, name TEXT NOT NULL, number TEXT NOT NULL);");
         db.close(); //CLOSE
