@@ -21,7 +21,7 @@ public class UsersDatabase
     // Static method for creating classes.
     public static void create(SQLiteDatabase _db)
     {
-        final String query = "CREATE TABLE " + DatabaseVaribles.USER_TABLE + " (email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL);";
+        final String query = "CREATE TABLE " + DatabaseVaribles.USER_TABLE + " (email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL, firstName TEXT NOT NULL, lastName TEXT);";
         _db.execSQL(query);
     }
 
@@ -53,7 +53,7 @@ public class UsersDatabase
         return null;
     }
 
-    public void create(String email, String password)
+    public void create(String email, String password, String firstName, String lastName)
     {
         // Predefined query for inserting into the users database.
         String query = "INSERT INTO " + DatabaseVaribles.USER_TABLE + " (email, password) VALUES (";
@@ -62,7 +62,7 @@ public class UsersDatabase
         SQLiteDatabase db = ctx.getWritableDatabase();
 
         // Execute insert query.
-        db.execSQL(query + "'"+ email +"','" + password + "');");
+        db.execSQL(query + "'"+ email +"','" + password + "','" + firstName + "','" + lastName + "');");
         db.close();
     }
 }

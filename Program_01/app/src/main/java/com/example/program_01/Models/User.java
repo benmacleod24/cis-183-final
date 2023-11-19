@@ -6,14 +6,18 @@ public class User
 
     // Really don't want to store the password in the user class.
     private String password;
+    private String firstName;
+    private String lastName;
 
     public User()
     {
 
     }
 
-    public User(String email)
+    public User(String email, String f, String l)
     {
+        this.firstName = f;
+        this.lastName = l;
         this.email = email;
     }
 
