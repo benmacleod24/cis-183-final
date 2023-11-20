@@ -11,11 +11,13 @@ public class UsersDatabase
 {
     // The database instance for this clas.
     Database ctx;
+    BusinessDatabase bizDb;
 
     public UsersDatabase(Context _ctx)
     {
         // Create the database instance for user in this class.
         ctx = new Database(_ctx);
+        bizDb = new BusinessDatabase(_ctx);
     }
 
     // Static method for creating classes.
@@ -57,6 +59,12 @@ public class UsersDatabase
     {
         // Predefined query for inserting into the users database.
         String query = "INSERT INTO " + DatabaseVaribles.USER_TABLE + " (email, password, firstName, lastName) VALUES (";
+
+        // Business Email Already Exist.
+        if (bizDb.getBusinessByEmail(email) != null)
+        {
+            return;
+        }
 
         // Get a writeable database instance.
         SQLiteDatabase db = ctx.getWritableDatabase();

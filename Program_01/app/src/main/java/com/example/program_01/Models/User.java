@@ -55,7 +55,7 @@ public class User
     {
         if (enteredPassword.equals(password))
         {
-            Session.login(this);
+            //Session.login(this);
             return true;
         }
 
