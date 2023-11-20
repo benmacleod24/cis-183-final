@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     //Intent stuff
     Intent createBusinessIntent;
     Intent createUserIntent;
+    Intent userHomeIntent;
 
     //Array Stuff
     ArrayList<Business> listOfBusinesses;
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity
 
         //Intent Stuff
         createBusinessIntent = new Intent(MainActivity.this, CreateBusiness.class);
+        createUserIntent = new Intent(MainActivity.this, CreateAccount.class);
+        userHomeIntent = new Intent(MainActivity.this, UserHome.class);
 
         //Functions
         loginButtonEvent();
@@ -90,6 +93,14 @@ public class MainActivity extends AppCompatActivity
                     //No need to set error visibilities to invisible because we'll be loading a new intent anyway (home page)
 
                     //Log in, then jump to home page intent
+
+                    String email = et_j_email.getText().toString();
+                    User user = usersDb.getUserByEmail(email);
+
+                    if (user != null && user.isValidLogin(et_j_password.getText().toString()))
+                    {
+                        startActivity(userHomeIntent);
+                    }
 
                 }
                 else
@@ -112,13 +123,8 @@ public class MainActivity extends AppCompatActivity
 
     public void createAccountButtonEvent()
     {
-        btn_j_createAccount.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Log.d("Button Pressed:", "=====Create Account Button Pressed=====");
-            }
+        btn_j_createAccount.setOnClickListener(view -> {
+            startActivity(createUserIntent);
         });
     }
 

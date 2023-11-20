@@ -45,7 +45,7 @@ public class UsersDatabase
 
         if (cursor.moveToFirst())
         {
-            return new User(cursor.getString(cursor.getColumnIndex("email")), cursor.getString(cursor.getColumnIndex("password")));
+            return new User(cursor.getString(cursor.getColumnIndex("email")), cursor.getString(cursor.getColumnIndex("password")), cursor.getString(cursor.getColumnIndex("firstName")), cursor.getString(cursor.getColumnIndex("lastName")));
         }
 
         // Return null here.
@@ -56,7 +56,7 @@ public class UsersDatabase
     public void create(String email, String password, String firstName, String lastName)
     {
         // Predefined query for inserting into the users database.
-        String query = "INSERT INTO " + DatabaseVaribles.USER_TABLE + " (email, password) VALUES (";
+        String query = "INSERT INTO " + DatabaseVaribles.USER_TABLE + " (email, password, firstName, lastName) VALUES (";
 
         // Get a writeable database instance.
         SQLiteDatabase db = ctx.getWritableDatabase();
@@ -64,5 +64,23 @@ public class UsersDatabase
         // Execute insert query.
         db.execSQL(query + "'"+ email +"','" + password + "','" + firstName + "','" + lastName + "');");
         db.close();
+    }
+
+    public boolean doesEmailExist(String email)
+    {
+        String query = "SELECT email FROM " + DatabaseVaribles.USER_TABLE + " WHERE email ='"+ email +"';";
+
+        SQLiteDatabase db = ctx.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.getCount() == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -8,199 +8,156 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-322dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".CreateAccount"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-322dp">
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Change Password"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="337dp" />
-
-        <EditText
-            android:id="@+id/inp_createAcct_confirmPassword"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="356dp" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="251dp" />
-
-        <EditText
-            android:id="@+id/inp_createAcct_email"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="155dp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="136dp" />
-
-        <EditText
-            android:id="@+id/inp_createAcct_lastName"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="66dp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="First Name"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="47dp" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last Name"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="47dp" />
-
-        <EditText
-            android:id="@+id/inp_createAcct_firstName"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="66dp" />
-
-        <EditText
-            android:id="@+id/inp_createAcct_password"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="270dp" />
-
-        <Button
-            android:id="@+id/btn_createAcct_create"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:text="Create Account"
-            tools:layout_editor_absoluteX="45dp"
-            tools:layout_editor_absoluteY="594dp" />
-
-        <Button
-            android:id="@+id/btn_createAcct_create2"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            tools:layout_editor_absoluteX="45dp"
-            tools:layout_editor_absoluteY="655dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="251dp" />
+        android:layout_marginTop="22dp"
+        android:text="Change Password"
+        app:layout_constraintStart_toStartOf="@+id/inp_createAcct_confirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/inp_createAcct_password" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
-        android:layout_width="320dp"
+        android:id="@+id/inp_createAcct_confirmPassword"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
         android:text="Password"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="251dp" />
+        app:layout_constraintStart_toStartOf="@+id/inp_createAcct_password"
+        app:layout_constraintTop_toBottomOf="@+id/inp_createAcct_email" />
 
     <EditText
         android:id="@+id/inp_createAcct_email"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         android:ems="10"
         android:inputType="text"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="155dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="185dp"
         android:text="Email"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="136dp" />
+        app:layout_constraintEnd_toStartOf="@+id/txt_createAcct_valid_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inp_createAcct_firstName" />
+
+    <TextView
+        android:id="@+id/txt_createAcct_valid_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:text="Email"
+        android:textAlignment="textEnd"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/inp_createAcct_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/inp_createAcct_lastName"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        tools:layout_editor_absoluteX="214dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintEnd_toEndOf="@+id/txt_createAcct_valid_email"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/inp_createAcct_firstName" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="47dp"
         android:text="First Name"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="47dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="128dp"
         android:text="Last Name"
-        tools:layout_editor_absoluteX="214dp"
-        tools:layout_editor_absoluteY="47dp" />
+        app:layout_constraintBottom_toTopOf="@+id/inp_createAcct_lastName"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/inp_createAcct_firstName"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
         android:ems="10"
         android:inputType="text"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintEnd_toStartOf="@+id/inp_createAcct_lastName"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/inp_createAcct_password"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <Button
+        android:id="@+id/btn_createAcct_create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="14dp"
+        android:text="Create Account"
+        app:layout_constraintBottom_toTopOf="@+id/btn_createAcct_create2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_createAcct_create2"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="28dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_createAcct_create"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_createAcct_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="58dp"
+        android:text="Errors"
+        android:textColor="#EF0101"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inp_createAcct_confirmPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

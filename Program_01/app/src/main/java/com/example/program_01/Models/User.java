@@ -1,11 +1,26 @@
 package com.example.program_01.Models;
 
+import com.example.program_01.Controllers.Session;
+
 public class User
 {
     private String email;
 
     // Really don't want to store the password in the user class.
     private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     private String firstName;
     private String lastName;
 
@@ -21,15 +36,14 @@ public class User
         this.email = email;
     }
 
-    public String getPassword()
-    {
-        return password;
-    }
 
-    public User(String email, String password)
+
+    public User(String email, String password, String f, String l)
     {
         this.email = email;
         this.password = password;
+        this.firstName = f;
+        this.lastName = l;
     }
 
     /**
@@ -41,6 +55,7 @@ public class User
     {
         if (enteredPassword.equals(password))
         {
+            Session.login(this);
             return true;
         }
 
