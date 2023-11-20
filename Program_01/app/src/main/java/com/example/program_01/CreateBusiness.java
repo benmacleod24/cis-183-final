@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.Database;
 import com.example.program_01.Models.Business;
 
@@ -29,9 +30,10 @@ public class CreateBusiness extends AppCompatActivity
 
     //Intent Stuff
     Intent mainActivityIntent;
+    Intent bussinessHomeIntent;
 
     //Database Stuff
-    Database database;
+    BusinessDatabase businessDb;
 
     //ArrayList Stuff
     ArrayList<Business> listOfBusinesses;
@@ -52,14 +54,15 @@ public class CreateBusiness extends AppCompatActivity
         btn_j_cb_back = findViewById(R.id.btn_v_cb_back);
 
         //Database Stuff
-        database = new Database(this);
+        businessDb = new BusinessDatabase(this);
 
         //Make ArrayList and fill data from database into it to check for unique email
         listOfBusinesses = new ArrayList<Business>();
-        // UNCOMMENT AFTER DATABASE FIX   listOfBusinesses = database.businesses.getAllBusinesses();
+        listOfBusinesses = businessDb.getAllBusinesses();
 
         //Intent Stuff
         mainActivityIntent = new Intent(CreateBusiness.this, MainActivity.class);
+        bussinessHomeIntent = new Intent(CreateBusiness.this, businessHome.class);
 
         //Functions
         createBusinessButtonEvent();
@@ -101,9 +104,10 @@ public class CreateBusiness extends AppCompatActivity
                         tv_j_cb_emailError.setVisibility(View.INVISIBLE); //Hide error (is unique)
                         //make new Business
                         Business b = new Business(email, password, name, number);
-                        //database.businesses.createBusiness(b); //Add that business to the businesses table in our database
+                        businessDb.createBusiness(b);
 
-                        //LOG IN AND GO TO HOME PAGE
+                        //LOG IN AND GO TO BUSINESS HOME PAGE
+                        startActivity(bussinessHomeIntent);
                     }
                     else
                     {
