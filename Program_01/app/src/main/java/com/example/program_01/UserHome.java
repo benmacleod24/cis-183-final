@@ -29,6 +29,6 @@ public class UserHome extends AppCompatActivity {
 
     private void mountData()
     {
-        txt_j_welcome.setText("Welcome, " + Session.getUser().getFirstName() + "!");
+        //txt_j_welcome.setText("Welcome, " + Session.getUser().getFirstName() + "!");
     }
 }

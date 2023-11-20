@@ -146,7 +146,7 @@ public class CreateAccount extends AppCompatActivity {
                 User user = new User(email, firstName, lastName);
                 userDb.create(email, password, firstName, password);
 
-                Session.login(user);
+                //Session.login(user);
                 startActivity(userHome);
             }
             else

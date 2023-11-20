@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.program_01.Controllers.Session;
+import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.Database;
 import com.example.program_01.Database.UsersDatabase;
 import com.example.program_01.Models.Business;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
     UsersDatabase usersDb;
+    BusinessDatabase bizDb;
 
     //GUI Stuff
     EditText et_j_email;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         usersDb = new UsersDatabase(this);
+        bizDb = new BusinessDatabase(this);
 
         //Connect GUI
         et_j_email = findViewById(R.id.et_v_email);
@@ -82,41 +86,35 @@ public class MainActivity extends AppCompatActivity
 
     public void loginButtonEvent()
     {
-        btn_j_login.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        btn_j_login.setOnClickListener(v -> {
+            String email = et_j_email.getText().toString();
+            String password = et_j_password.getText().toString();
+
+            if (email.isEmpty() || password.isEmpty())
             {
-                Log.d("Button Pressed:", "=====Login Button Pressed=====");
-                if(!et_j_email.getText().toString().equals("") && !et_j_password.getText().toString().equals("")) //If both fields are filled
+                // Tell the user to enter all fields.
+            }
+
+            // Get the account type.
+            String accountType = getEmailAccountType(email);
+
+            // User Account Type.
+            if (accountType.equals(Session.USER_TYPE))
+            {
+                User user = usersDb.getUserByEmail(email);
+
+                // Check Login validity & Log the user in.
+                if (user.isValidLogin(password))
                 {
-                    //No need to set error visibilities to invisible because we'll be loading a new intent anyway (home page)
-
-                    //Log in, then jump to home page intent
-
-                    String email = et_j_email.getText().toString();
-                    User user = usersDb.getUserByEmail(email);
-
-                    if (user != null && user.isValidLogin(et_j_password.getText().toString()))
-                    {
-                        startActivity(userHomeIntent);
-                    }
-
+                    Session.login(user);
+                    startActivity(userHomeIntent);
                 }
-                else
-                {
-                    if (et_j_email.getText().toString().equals("")) //If email field is empty
-                    {
-                        tv_j_emailError.setVisibility(View.VISIBLE); //Set email error visible
-                    }
-                    else {tv_j_emailError.setVisibility(View.INVISIBLE);} //If email field is filled, set email error invisible
 
-                    if (et_j_password.getText().toString().equals("")) //If password field is empty
-                    {
-                        tv_j_passwordError.setVisibility(View.VISIBLE); //If password field is filled, set password error visible
-                    }
-                    else {tv_j_passwordError.setVisibility(View.INVISIBLE);} //Set password error invisible
-                }
+            }
+            // Business Account Type.
+            else if (accountType.equals(Session.BUSINESS_TYPE))
+            {
+                // Login Business.
             }
         });
     }
@@ -147,5 +145,24 @@ public class MainActivity extends AppCompatActivity
         {
             Log.d("Business " + i + ":", listOfBusinesses.get(i).getName());
         }
+    }
+
+    /**
+     * Get the account type of the email.
+     * @param email
+     * @return The account types defined in session controller.
+     */
+    public String getEmailAccountType(String email)
+    {
+        if (usersDb.getUserByEmail(email) != null)
+        {
+            return Session.USER_TYPE;
+        }
+        else if (bizDb.getBusinessByEmail(email) != null)
+        {
+            return Session.BUSINESS_TYPE;
+        }
+
+        return null;
     }
 }
