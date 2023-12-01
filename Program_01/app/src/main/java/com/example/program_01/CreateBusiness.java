@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.Database;
+import com.example.program_01.Database.UsersDatabase;
 import com.example.program_01.Models.Business;
+import com.example.program_01.Models.User;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,7 @@ public class CreateBusiness extends AppCompatActivity
 
     //Database Stuff
     BusinessDatabase businessDb;
+    UsersDatabase usersDb;
 
     //ArrayList Stuff
     ArrayList<Business> listOfBusinesses;
@@ -55,14 +58,21 @@ public class CreateBusiness extends AppCompatActivity
 
         //Database Stuff
         businessDb = new BusinessDatabase(this);
+        usersDb = new UsersDatabase(this);
 
         //Make ArrayList and fill data from database into it to check for unique email
         listOfBusinesses = new ArrayList<Business>();
         listOfBusinesses = businessDb.getAllBusinesses();
+        //TEST
+        for (int i = 0; i < listOfBusinesses.size(); i++)
+        {
+            Log.d("Name of Business " + i + ":", listOfBusinesses.get(i).getName() + ", " + listOfBusinesses.get(i).getEmail());
+        }
 
         //Intent Stuff
         mainActivityIntent = new Intent(CreateBusiness.this, MainActivity.class);
         bussinessHomeIntent = new Intent(CreateBusiness.this, businessHome.class);
+
 
         //Functions
         createBusinessButtonEvent();
@@ -94,15 +104,19 @@ public class CreateBusiness extends AppCompatActivity
                     boolean isUnique = true;
                     for (int i = 0; i < listOfBusinesses.size(); i++) //Iterate through all businesses
                     {
-                        if (email == listOfBusinesses.get(i).getEmail()) //If the email in the text box equals any email from the list, then
+                        if (email.equals(listOfBusinesses.get(i).getEmail())) //If the email in the text box equals any email from the list, then
                         {
                             isUnique = false; //It is no longer unique
                         }
                     }
+                    if (!usersDb.doesEmailExist(email)) //Also check users
+                    { //Seems like logic is flipped for .doesEmailExits() but it's ok
+                        isUnique = false;
+                    }
                     if (isUnique) //If it ended up being unique
                     {
                         tv_j_cb_emailError.setVisibility(View.INVISIBLE); //Hide error (is unique)
-                        //make new Business
+                        //Make new Business
                         Business b = new Business(email, password, name, number);
                         businessDb.createBusiness(b);
 

@@ -6,4 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".createService">
 
+    <EditText
+        android:id="@+id/et_v_cs_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="23dp"
+        android:ems="10"
+        android:hint="Describe Your Service"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_v_cs_isEmergency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_v_cs_name" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="45dp"
+        android:text="Create Your Service"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_v_cs_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_v_cs_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="27dp"
+        android:ems="10"
+        android:hint="Name Your Service"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_v_cs_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <CheckBox
+        android:id="@+id/cb_v_cs_isEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="23dp"
+        android:text="Is this an emergency service?"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_cs_createService"
+        app:layout_constraintStart_toStartOf="@+id/et_v_cs_desc"
+        app:layout_constraintTop_toBottomOf="@+id/et_v_cs_desc" />
+
+    <Button
+        android:id="@+id/btn_v_cs_createService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="13dp"
+        android:text="Create Service"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_cs_back"
+        app:layout_constraintStart_toStartOf="@+id/cb_v_cs_isEmergency"
+        app:layout_constraintTop_toBottomOf="@+id/cb_v_cs_isEmergency" />
+
+    <Button
+        android:id="@+id/btn_v_cs_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="Back"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_cs_createService" />
 </androidx.constraintlayout.widget.ConstraintLayout>

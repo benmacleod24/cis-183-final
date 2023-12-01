@@ -17,7 +17,7 @@ public class UsersDatabase
     {
         // Create the database instance for user in this class.
         ctx = new Database(_ctx);
-        bizDb = new BusinessDatabase(_ctx);
+        //bizDb = new BusinessDatabase(_ctx);
     }
 
     // Static method for creating classes.
@@ -60,11 +60,15 @@ public class UsersDatabase
         // Predefined query for inserting into the users database.
         String query = "INSERT INTO " + DatabaseVaribles.USER_TABLE + " (email, password, firstName, lastName) VALUES (";
 
+
+        //I had to comment the bizDb stuff out because it was throwing me an error.
+        //Solution: Don't check if business email already exists here, instead check on the "CreateAccount" page.
+        //Make an instance of bizDb on CreateAccount.java to do this instead of here
         // Business Email Already Exist.
-        if (bizDb.getBusinessByEmail(email) != null)
-        {
-            return;
-        }
+        //if (bizDb.getBusinessByEmail(email) != null)
+        //{
+        //    return;
+        //}
 
         // Get a writeable database instance.
         SQLiteDatabase db = ctx.getWritableDatabase();

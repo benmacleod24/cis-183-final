@@ -93,8 +93,7 @@ public class BusinessDatabase
 
     public void createBusiness(Business b) // Creates a business in the database with the given info from the Business object b that was caught
     {
-        SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
-        //Inserts a new business into the business table with the values from the Business object b that was caught
+        SQLiteDatabase db = ctx.getWritableDatabase();
         db.execSQL("INSERT INTO " + DatabaseVaribles.BUSINESS_TABLE + " VALUES ('" + b.getEmail() + "','" + b.getPassword() + "','" + b.getName() + "','" + b.getNumber() + "');");
         db.close(); //CLOSE
     }
@@ -102,7 +101,6 @@ public class BusinessDatabase
     public void updateBusiness(Business b) // Updates the business with the given info from the Business object b that was caught. Email not included (primary key)
     {
         SQLiteDatabase db = ctx.getWritableDatabase();
-        //Query to update the password, name, and number of the business that has the email b.getEmail()
         String updateCommand = "UPDATE " + DatabaseVaribles.BUSINESS_TABLE + " SET pasword = '" + b.getPassword() + "' , name = '" + b.getName() + "' , number = '" + b.getNumber() + "' WHERE email = '" + b.getEmail() + "';";
         db.execSQL(updateCommand); //Execute
         db.close(); //CLOSE
@@ -110,7 +108,7 @@ public class BusinessDatabase
 
     public void deleteBusiness(String e)
     {
-        SQLiteDatabase db = ctx.getWritableDatabase(); //Get writable
+        SQLiteDatabase db = ctx.getWritableDatabase();
         //Deletes the business with the given email (e) from the business table
         db.execSQL("DELETE FROM " + DatabaseVaribles.BUSINESS_TABLE + " WHERE email = '" + e + "';");
         db.close(); //CLOSE

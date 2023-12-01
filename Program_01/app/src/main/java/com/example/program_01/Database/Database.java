@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper
         // Create the users table from this static method.
         UsersDatabase.create(sqLiteDatabase);
         BusinessDatabase.create(sqLiteDatabase);
+        ServiceDatabase.create(sqLiteDatabase);
     }
 
     @Override
@@ -27,6 +28,7 @@ public class Database extends SQLiteOpenHelper
         // Drop and clean out the tables.
         UsersDatabase.clean(sqLiteDatabase);
         BusinessDatabase.clean(sqLiteDatabase);
+        ServiceDatabase.clean(sqLiteDatabase);
 
         // Recall onCreate function to restructure database.
         onCreate(sqLiteDatabase);

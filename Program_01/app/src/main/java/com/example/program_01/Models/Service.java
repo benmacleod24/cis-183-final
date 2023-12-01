@@ -9,20 +9,21 @@ public class Service
     public static String SERVICE_TYPE_BASIC = "SERVICE_BASIC";
 
     private int serviceId; //Auto Incrementing
-    private String businessId; //Business Email
+    private String businessId; //Business Email (foreign key)
     private String serviceType; //Emergency vs Basic
     private String serviceName; //Name of service
-    private String serviceDescription; //Desc
+    private String serviceDesc; //Desc
 
     public Service() {}
 
     public Service(int id, String e, String sType, String sName, String sDesc)
     {
+        //ORDER: serviceId, businessId, serviceType, serviceName, serviceDesc
         serviceId = id;
         businessId = e;
         serviceType = sType;
         serviceName = sName;
-        serviceDescription = sDesc;
+        serviceDesc = sDesc;
     }
 
     //GETTERS
@@ -48,7 +49,7 @@ public class Service
 
     public String getServiceDescription()
     {
-        return serviceDescription;
+        return serviceDesc;
     }
 
     //SETTERS
