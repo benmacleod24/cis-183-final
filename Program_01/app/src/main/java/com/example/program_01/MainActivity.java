@@ -31,9 +31,8 @@ public class MainActivity extends AppCompatActivity
     Button btn_j_login;
     Button btn_j_createAccount;
     Button btn_j_createBusiness;
-    TextView tv_j_loginError;
-    TextView tv_j_emailError;
-    TextView tv_j_passwordError;
+    TextView tv_v_fieldsError;
+    TextView tv_v_loginError;
 
     //Database stuff
     Database database;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     Intent createBusinessIntent;
     Intent createUserIntent;
     Intent userHomeIntent;
+    Intent businessHomeIntent;
 
     //Array Stuff
     ArrayList<Business> listOfBusinesses;
@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity
         btn_j_login = findViewById(R.id.btn_v_login);
         btn_j_createAccount = findViewById(R.id.btn_v_createAccount);
         btn_j_createBusiness = findViewById(R.id.btn_v_createBusiness);
-        tv_j_emailError = findViewById(R.id.tv_v_emailError);
-        tv_j_passwordError = findViewById(R.id.tv_v_passwordError);
-        tv_j_loginError = findViewById(R.id.tv_v_loginError);
+        tv_v_fieldsError = findViewById(R.id.tv_v_fieldsError);
+        tv_v_loginError = findViewById(R.id.tv_v_loginError);
+
 
         // Setup the database
         database = new Database(this);
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity
         createBusinessIntent = new Intent(MainActivity.this, CreateBusiness.class);
         createUserIntent = new Intent(MainActivity.this, CreateAccount.class);
         userHomeIntent = new Intent(MainActivity.this, UserHome.class);
+        businessHomeIntent = new Intent(MainActivity.this, businessHome.class);
 
         //Functions
         loginButtonEvent();
@@ -86,35 +87,58 @@ public class MainActivity extends AppCompatActivity
 
     public void loginButtonEvent()
     {
-        btn_j_login.setOnClickListener(v -> {
+        btn_j_login.setOnClickListener(v ->
+        {
             String email = et_j_email.getText().toString();
             String password = et_j_password.getText().toString();
+            tv_v_loginError.setVisibility(View.INVISIBLE);
 
             if (email.isEmpty() || password.isEmpty())
             {
                 // Tell the user to enter all fields.
+                tv_v_fieldsError.setVisibility(View.VISIBLE);
             }
-
-            // Get the account type.
-            String accountType = getEmailAccountType(email);
-
-            // User Account Type.
-            if (accountType.equals(Session.USER_TYPE))
+            else
             {
-                User user = usersDb.getUserByEmail(email);
+                tv_v_fieldsError.setVisibility(View.INVISIBLE);
 
-                // Check Login validity & Log the user in.
-                if (user.isValidLogin(password))
+                // Get the account type.
+                String accountType = getEmailAccountType(email);
+
+                if (accountType == null)
                 {
-                    Session.login(user);
-                    startActivity(userHomeIntent);
+                    tv_v_loginError.setVisibility(View.VISIBLE);
                 }
+                else if (accountType.equals(Session.USER_TYPE)) // User Account Type.
+                {
+                    User user = usersDb.getUserByEmail(email);
 
-            }
-            // Business Account Type.
-            else if (accountType.equals(Session.BUSINESS_TYPE))
-            {
-                // Login Business.
+                    // Check Login validity & Log the user in.
+                    if (user.isValidLogin(password))
+                    {
+                        Session.login(user);
+                        startActivity(userHomeIntent);
+                    }
+                    else //Not valid password. Show error
+                    {
+                        tv_v_loginError.setVisibility(View.VISIBLE);
+                    }
+
+                }
+                else if (accountType.equals(Session.BUSINESS_TYPE)) // Business Account Type.
+                {
+                    // Login Business.
+                    Business business = bizDb.getBusinessByEmail(email);
+                    if (business.isValidLogin(password))
+                    {
+                        Session.login(business);
+                        startActivity(businessHomeIntent);
+                    }
+                    else //Not valid password. Show error
+                    {
+                        tv_v_loginError.setVisibility(View.VISIBLE);
+                    }
+                }
             }
         });
     }

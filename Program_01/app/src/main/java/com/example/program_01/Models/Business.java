@@ -63,4 +63,15 @@ public class Business
         number = num;
     }
     //=========================
+
+    public boolean isValidLogin(String enteredPassword) //Check login
+    {
+        if (enteredPassword.equals(password))
+        {
+            //Session.login(this);
+            return true;
+        }
+
+        return false;
+    }
 }

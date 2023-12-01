@@ -36,7 +36,7 @@ public class Session
         return user;
     }
 
-    public static  Business getBusiness()
+    public static Business getBusiness()
     {
         return business;
     }
