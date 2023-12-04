@@ -9,19 +9,37 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.program_01.Controllers.Session;
+import com.example.program_01.Database.OrderDatabase;
+import com.example.program_01.Models.Order;
+
+import java.util.ArrayList;
 
 public class UserHome extends AppCompatActivity {
 
     Button btn_emergency;
     Button btn_services;
+    OrderDatabase orderDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+        orderDb = new OrderDatabase(this);
 
         // Setup the page with elements and data.
         mountElements();
+        testOrders();
+    }
+
+    public void testOrders()
+    {
+        if (Session.getUser() == null) return;
+        ArrayList<Order> orders = orderDb.getOrderByUser(Session.getUser().getEmail());
+
+        for (int i =0; i < orders.size(); i++)
+        {
+            Log.d("OrderID: " + orders.get(i).getOrderId(), "ServiceID: " + orders.get(i).getServiceId() + "  ||  BizID:" + orders.get(i).getBusinessId());
+        }
     }
 
     public void mountElements()

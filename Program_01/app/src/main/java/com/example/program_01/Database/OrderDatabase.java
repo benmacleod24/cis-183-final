@@ -63,6 +63,33 @@ public class OrderDatabase
         return listOfOrders;
     }
 
+    @SuppressLint("Range")
+    public ArrayList<Order> getOrderByUser(String userId)
+    {
+        ArrayList<Order> listOfOrders = new ArrayList<Order>();
+        String sql = "SELECT * FROM " + DatabaseVaribles.ORDER_TABLE + " WHERE userId = '" + userId +"';";
+
+        SQLiteDatabase _db = db.getReadableDatabase();
+        Cursor cursor = _db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst())
+        {
+            do
+            {
+                int orderId = cursor.getInt(cursor.getColumnIndex("orderId"));
+                int serviceId = cursor.getInt(cursor.getColumnIndex("serviceId"));
+                String businessId = cursor.getString(cursor.getColumnIndex("businessId"));
+                String _userId = cursor.getString(cursor.getColumnIndex("userId"));
+
+                listOfOrders.add(new Order(orderId, businessId, serviceId, _userId));
+            }
+            while (cursor.moveToNext());
+        }
+
+        _db.close();
+        return listOfOrders;
+    }
+
     /**
      * Create a new order record.
      * @param _order New order object.
