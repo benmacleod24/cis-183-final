@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.example.program_01.Database.OrderDatabase;
@@ -33,15 +34,17 @@ public class EmergencyPage extends AppCompatActivity {
     {
         btn_j_towing.setOnClickListener(view -> {
             Intent serviceListIntent = new Intent(EmergencyPage.this, ServiceList.class);
-
-            serviceListIntent.putExtra("CATEGORY", Service.)
+            serviceListIntent.putExtra("CATEGORY", Service.SERVICE_TYPE_TOWING);
+            startActivity(serviceListIntent);
         });
     }
 
     public void onRoadSideClick()
     {
         btn_j_roadSide.setOnClickListener(view -> {
-            // Redirect To Intent For Services
+            Intent serviceListIntent = new Intent(EmergencyPage.this, ServiceList.class);
+            serviceListIntent.putExtra("CATEGORY", Service.SERVICE_TYPE_ROADSIDE_ASSISTANCE);
+            startActivity(serviceListIntent);
         });
     }
 }
