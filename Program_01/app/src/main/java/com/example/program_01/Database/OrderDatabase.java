@@ -21,7 +21,7 @@ public class OrderDatabase
 
     public static void create(SQLiteDatabase db)
     {
-        String sql = "CREATE TABLE " + DatabaseVaribles.SERVICE_TABLE + " (orderId INTEGER PRIMARY KEY AUTOINCREMENT, serviceId INTEGER NOT NULL, businessId TEXT, userId TEXT NOT NULL, FOREIGN KEY (serviceId) REFERENCES " + DatabaseVaribles.SERVICE_TABLE + " (serviceId), FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email), FOREIGN KEY (userId) REFERENCES " + DatabaseVaribles.USER_TABLE + " (email));";
+        String sql = "CREATE TABLE " + DatabaseVaribles.ORDER_TABLE + " (orderId INTEGER PRIMARY KEY AUTOINCREMENT, serviceId INTEGER NOT NULL, businessId TEXT, userId TEXT NOT NULL, FOREIGN KEY (serviceId) REFERENCES " + DatabaseVaribles.SERVICE_TABLE + " (serviceId), FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email), FOREIGN KEY (userId) REFERENCES " + DatabaseVaribles.USER_TABLE + " (email));";
         db.execSQL(sql);
     }
 

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
+import com.example.program_01.Adaptors.ServiceListAdaptor;
 import com.example.program_01.Database.ServiceDatabase;
 import com.example.program_01.Models.Service;
 
@@ -15,6 +17,9 @@ public class ServiceList extends AppCompatActivity {
 
     String serviceCategory;
     ServiceDatabase serviceDb;
+    ListView listView;
+    ServiceListAdaptor adaptor;
+    ArrayList<Service> listOfServices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +28,10 @@ public class ServiceList extends AppCompatActivity {
         getCategoryFromExtra();
 
         serviceDb = new ServiceDatabase(this);
-        ArrayList<Service> services = serviceDb.getAllServicesByType(serviceCategory);
+        listOfServices = serviceDb.getAllServicesByType(serviceCategory);
 
-        for (int i = 0; i < services.size(); i++)
-        {
-            Log.d("BIZ::ID", services.get(i).getBusinessId());
-        }
+        listView = findViewById(R.id.lv_serviceLs_list);
+        fillAdaptor();
     }
 
     private void getCategoryFromExtra()
@@ -38,5 +41,11 @@ public class ServiceList extends AppCompatActivity {
 
         Log.d("CATEGORY",_bundle.getString("CATEGORY"));
         serviceCategory = _bundle.getString("CATEGORY");
+    }
+
+    private void fillAdaptor()
+    {
+        adaptor = new ServiceListAdaptor(this, listOfServices);
+        listView.setAdapter(adaptor);
     }
 }

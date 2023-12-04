@@ -13,7 +13,9 @@ import android.widget.ListView;
 
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
+import com.example.program_01.Database.OrderDatabase;
 import com.example.program_01.Database.ServiceDatabase;
+import com.example.program_01.Models.Order;
 import com.example.program_01.Models.Service;
 
 import java.io.Serializable;
@@ -32,6 +34,7 @@ public class businessHome extends AppCompatActivity
     //Database Stuff if we even need it here
     BusinessDatabase businessDb;
     ServiceDatabase serviceDb;
+    OrderDatabase orderDb;
 
     //Adapter Stuff
     MyServicesAdapter adapter;
@@ -53,6 +56,7 @@ public class businessHome extends AppCompatActivity
         //Database
         serviceDb = new ServiceDatabase(this);
         businessDb = new BusinessDatabase(this);
+        orderDb = new OrderDatabase(this);
 
         //MyServices Array
         listOfMyServices = new ArrayList<Service>();
@@ -64,9 +68,19 @@ public class businessHome extends AppCompatActivity
 
 
         //FUNCTIONS
+        testOrders();
         fillListView();
         createServiceButtonEvent();
         listViewOnClickListener();
+    }
+
+    private void testOrders()
+    {
+        ArrayList<Order> orders = orderDb.geOrdersByBusinessId(Session.getBusiness().getEmail());
+        for (int i = 0; i < orders.size(); i++)
+        {
+            Log.d("Order: " + orders.get(i).getOrderId(), "For user: " + orders.get(i).getUserId() + "::serviceId " + orders.get(i).getServiceId());
+        }
     }
 
     public void createServiceButtonEvent()

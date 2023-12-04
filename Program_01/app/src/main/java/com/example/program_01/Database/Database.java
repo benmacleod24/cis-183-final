@@ -20,6 +20,7 @@ public class Database extends SQLiteOpenHelper
         UsersDatabase.create(sqLiteDatabase);
         BusinessDatabase.create(sqLiteDatabase);
         ServiceDatabase.create(sqLiteDatabase);
+        OrderDatabase.create(sqLiteDatabase);
     }
 
     @Override
@@ -29,6 +30,7 @@ public class Database extends SQLiteOpenHelper
         UsersDatabase.clean(sqLiteDatabase);
         BusinessDatabase.clean(sqLiteDatabase);
         ServiceDatabase.clean(sqLiteDatabase);
+        OrderDatabase.clean(sqLiteDatabase);
 
         // Recall onCreate function to restructure database.
         onCreate(sqLiteDatabase);

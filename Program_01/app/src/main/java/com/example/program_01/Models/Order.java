@@ -17,6 +17,13 @@ public class Order
         userId = u;
     }
 
+    public Order(String b, int s, String u)
+    {
+        businessId = b;
+        serviceId = s;
+        userId = u;
+    }
+
     //GETTERS
     public int getOrderId()
     {

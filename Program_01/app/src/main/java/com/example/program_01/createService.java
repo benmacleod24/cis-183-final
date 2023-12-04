@@ -68,7 +68,7 @@ public class createService extends AppCompatActivity
 
 
         //TESTING
-        ArrayList<Service> allServicesUnderMe = new ArrayList<Service>();
+        /*ArrayList<Service> allServicesUnderMe = new ArrayList<Service>();
         allServicesUnderMe = serviceDb.getAllServicesUnderBusiness(Session.getBusiness().getEmail());
         if (allServicesUnderMe != null)
         {
@@ -76,7 +76,7 @@ public class createService extends AppCompatActivity
             {
                 Log.d("SERVICES UNDER " + Session.getBusiness().getEmail() + ":", allServicesUnderMe.get(i).getServiceType());
             }
-        }
+        }*/
         //TESTING
 
 
