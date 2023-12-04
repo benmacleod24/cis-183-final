@@ -7,4 +7,5 @@ public class DatabaseVaribles
     public static String USER_TABLE = "users";
     public static String BUSINESS_TABLE = "businesses";
     public static String SERVICE_TABLE = "services";
+    public static  String ORDER_TABLE = "orders";
 }

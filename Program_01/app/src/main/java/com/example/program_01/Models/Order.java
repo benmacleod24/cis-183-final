@@ -5,14 +5,16 @@ public class Order
     public int orderId;
     public String businessId;
     public int serviceId;
+    public String userId;
 
     public Order() {}
 
-    public Order(int o, String b, int s)
+    public Order(int o, String b, int s, String u)
     {
         orderId = o;
         businessId = b;
         serviceId = s;
+        userId = u;
     }
 
     //GETTERS
@@ -30,6 +32,11 @@ public class Order
     {
         return serviceId;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
 
     //SETTERS
 }
