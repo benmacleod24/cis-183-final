@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.Database;
 import com.example.program_01.Database.UsersDatabase;
@@ -121,6 +122,7 @@ public class CreateBusiness extends AppCompatActivity
                         businessDb.createBusiness(b);
 
                         //LOG IN AND GO TO BUSINESS HOME PAGE
+                        Session.login(b);
                         startActivity(bussinessHomeIntent);
                     }
                     else

@@ -10,42 +10,32 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="Business Home"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="50dp" />
 
     <Button
         android:id="@+id/btn_v_createService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
         android:text="Create Service"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_v_editService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="41dp"
-        android:text="EditService"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_v_createService"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_createService" />
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="115dp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
         android:text="bottomtaskbarthing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <ListView
+        android:id="@+id/lv_v_bh_myServices"
+        android:layout_width="409dp"
+        android:layout_height="467dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="168dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

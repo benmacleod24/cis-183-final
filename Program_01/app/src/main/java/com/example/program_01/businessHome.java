@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.program_01.Database.BusinessDatabase;
+import com.example.program_01.Database.ServiceDatabase;
 
 public class businessHome extends AppCompatActivity
 {
     //GUI
     Button btn_j_createService;
-    Button btn_j_editService;
 
     //Intent Stuff
     Intent createServiceIntent;
@@ -22,6 +22,7 @@ public class businessHome extends AppCompatActivity
 
     //Database Stuff if we even need it here
     BusinessDatabase businessDb;
+    ServiceDatabase serviceDb;
 
 
     @Override
@@ -32,17 +33,18 @@ public class businessHome extends AppCompatActivity
 
         //GUI
         btn_j_createService = findViewById(R.id.btn_v_createService);
-        btn_j_editService = findViewById(R.id.btn_v_editService);
 
         //Database
+        serviceDb = new ServiceDatabase(this);
         businessDb = new BusinessDatabase(this);
 
         //Intents
         createServiceIntent = new Intent(businessHome.this, createService.class);
         editServiceIntent = new Intent(businessHome.this, editService.class);
 
+
+        //FUNCTIONS
         createServiceButtonEvent();
-        editServiceButtonEvent();
     }
 
     public void createServiceButtonEvent()
@@ -58,16 +60,4 @@ public class businessHome extends AppCompatActivity
         });
     }
 
-    public void editServiceButtonEvent()
-    {
-        btn_j_editService.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Log.d("Button Pressed:", "=====Edit Service Button Pressed=====");
-                startActivity(editServiceIntent);
-            }
-        });
-    }
 }
