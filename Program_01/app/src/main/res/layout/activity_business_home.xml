@@ -10,34 +10,26 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="27dp"
         android:text="Business Home"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_createService"
+        app:layout_constraintStart_toStartOf="@+id/btn_v_createService"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_v_createService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginBottom="1dp"
         android:text="Create Service"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/lv_v_bh_myServices"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_v_editService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="41dp"
-        android:text="EditService"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_v_createService"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_createService" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView5"
@@ -47,5 +39,18 @@
         android:text="bottomtaskbarthing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_v_bh_myServices" />
+
+    <ListView
+        android:id="@+id/lv_v_bh_myServices"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_createService" />
 </androidx.constraintlayout.widget.ConstraintLayout>

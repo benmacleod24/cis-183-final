@@ -6,10 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
@@ -23,12 +28,11 @@ import java.util.ArrayList;
 public class createService extends AppCompatActivity
 {
     //GUI Stuff
-    EditText et_j_cs_name;
     EditText et_j_cs_desc;
-    CheckBox cb_j_cs_isEmergency;
     TextView tv_j_cs_fieldsError;
     Button btn_j_cs_createService;
     Button btn_j_cs_back;
+    Spinner sp_j_cs_serviceType;
 
     //Intent Stuff
     Intent bussinessHomeIntent;
@@ -44,12 +48,16 @@ public class createService extends AppCompatActivity
         setContentView(R.layout.activity_create_service);
 
         //GUI Stuff
-        et_j_cs_name = findViewById(R.id.et_v_cs_name);
         et_j_cs_desc = findViewById(R.id.et_v_cs_desc);
-        cb_j_cs_isEmergency = findViewById(R.id.cb_v_cs_isEmergency);
         tv_j_cs_fieldsError = findViewById(R.id.tv_v_cs_fieldsError);
         btn_j_cs_createService = findViewById(R.id.btn_v_cs_createService);
         btn_j_cs_back = findViewById(R.id.btn_v_cs_back);
+        sp_j_cs_serviceType = findViewById(R.id.sp_v_cs_serviceType);
+
+        //Drop Down Stuff
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.serviceTypes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_j_cs_serviceType.setAdapter(adapter);
 
         //Database Stuff
         businessDb = new BusinessDatabase(this);
@@ -58,15 +66,22 @@ public class createService extends AppCompatActivity
         //Intent Stuff
         bussinessHomeIntent = new Intent(createService.this, businessHome.class);
 
+
         //TESTING
         ArrayList<Service> allServicesUnderMe = new ArrayList<Service>();
         allServicesUnderMe = serviceDb.getAllServicesUnderBusiness(Session.getBusiness().getEmail());
-        for (int i = 0; i < allServicesUnderMe.size(); i++)
+        if (allServicesUnderMe != null)
         {
-            Log.d("SERVICES UNDER " + Session.getBusiness().getEmail() + ":", allServicesUnderMe.get(i).getServiceName());
+            for (int i = 0; i < allServicesUnderMe.size(); i++)
+            {
+                Log.d("SERVICES UNDER " + Session.getBusiness().getEmail() + ":", allServicesUnderMe.get(i).getServiceType());
+            }
         }
+        //TESTING
+
 
         //Functions
+        spinnerItemSelectEvent();
         createServiceButtonEvent();
         backButtonEvent();
     }
@@ -80,11 +95,9 @@ public class createService extends AppCompatActivity
             {
                 Log.d("Button Pressed: ", "=====Create Service Button Press (From Create Service Intent)=====");
 
-
-                String sName = et_j_cs_name.getText().toString();
                 String sDesc = et_j_cs_desc.getText().toString();
 
-                if (sName.equals("") || sDesc.equals(""))
+                if(sDesc.equals(""))
                 {
                     tv_j_cs_fieldsError.setVisibility(View.VISIBLE);
                 }
@@ -93,15 +106,31 @@ public class createService extends AppCompatActivity
                     tv_j_cs_fieldsError.setVisibility(View.INVISIBLE);
 
                     //Must make service through database first, then read services later because serviceId is auto incrementing
-                    if (cb_j_cs_isEmergency.isChecked()) //Service is of type EMERGENCY
+                    //No other way to do this really other than hardcode it
+                    //(There technically is but it'll take too long and I don't want to do it)
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("OIL CHANGE"))
                     {
-                        //Looks like this
-                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_EMERGENCY, sName, sDesc);
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_OIL_CHANGE, sDesc);
                     }
-                    else //Service is of type BASIC
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("REPAIRS"))
                     {
-                        //Looks like this
-                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_BASIC, sName, sDesc);
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_REPAIRS, sDesc);
+                    }
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("TUNING"))
+                    {
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_TUNING, sDesc);
+                    }
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("DETAILING"))
+                    {
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_DETAILING, sDesc);
+                    }
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("TOWING"))
+                    {
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_TOWING, sDesc);
+                    }
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("ROADSIDE ASSISTANCE"))
+                    {
+                        serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_ROADSIDE_ASSISTANCE, sDesc);
                     }
 
                     startActivity(bussinessHomeIntent);
@@ -119,6 +148,24 @@ public class createService extends AppCompatActivity
             {
                 Log.d("Button Pressed: ", "=====Back Button Press (From Create Service Intent)=====");
                 startActivity(bussinessHomeIntent);
+            }
+        });
+    }
+
+    public void spinnerItemSelectEvent()
+    {
+        sp_j_cs_serviceType.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String text = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
             }
         });
     }

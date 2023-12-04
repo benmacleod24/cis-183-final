@@ -4,17 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
+import com.example.program_01.Database.ServiceDatabase;
+import com.example.program_01.Models.Service;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class businessHome extends AppCompatActivity
 {
     //GUI
     Button btn_j_createService;
-    Button btn_j_editService;
+    ListView lv_j_bh_myServices;
 
     //Intent Stuff
     Intent createServiceIntent;
@@ -22,6 +31,13 @@ public class businessHome extends AppCompatActivity
 
     //Database Stuff if we even need it here
     BusinessDatabase businessDb;
+    ServiceDatabase serviceDb;
+
+    //Adapter Stuff
+    MyServicesAdapter adapter;
+
+    //MyServices Array
+    ArrayList<Service> listOfMyServices;
 
 
     @Override
@@ -32,17 +48,25 @@ public class businessHome extends AppCompatActivity
 
         //GUI
         btn_j_createService = findViewById(R.id.btn_v_createService);
-        btn_j_editService = findViewById(R.id.btn_v_editService);
+        lv_j_bh_myServices = findViewById(R.id.lv_v_bh_myServices);
 
         //Database
+        serviceDb = new ServiceDatabase(this);
         businessDb = new BusinessDatabase(this);
+
+        //MyServices Array
+        listOfMyServices = new ArrayList<Service>();
+        listOfMyServices = serviceDb.getAllServicesUnderBusiness(Session.getBusiness().getEmail());
 
         //Intents
         createServiceIntent = new Intent(businessHome.this, createService.class);
         editServiceIntent = new Intent(businessHome.this, editService.class);
 
+
+        //FUNCTIONS
+        fillListView();
         createServiceButtonEvent();
-        editServiceButtonEvent();
+        listViewOnClickListener();
     }
 
     public void createServiceButtonEvent()
@@ -58,16 +82,22 @@ public class businessHome extends AppCompatActivity
         });
     }
 
-    public void editServiceButtonEvent()
+    public void listViewOnClickListener()
     {
-        btn_j_editService.setOnClickListener(new View.OnClickListener()
+        lv_j_bh_myServices.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-                Log.d("Button Pressed:", "=====Edit Service Button Pressed=====");
+                editServiceIntent.putExtra("myService", listOfMyServices.get(i));
                 startActivity(editServiceIntent);
             }
         });
+    }
+
+    public void fillListView()
+    {
+        adapter = new MyServicesAdapter(this, listOfMyServices);
+        lv_j_bh_myServices.setAdapter(adapter);
     }
 }

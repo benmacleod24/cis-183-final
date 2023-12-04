@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.program_01.Controllers.Session;
 import com.example.program_01.Models.Business;
 import com.example.program_01.Models.Service;
 
@@ -23,9 +24,9 @@ public class ServiceDatabase
 
     public static void create(SQLiteDatabase db)
     {
-        //ORDER: serviceId -> businessId-> serviceType -> serviceName -> serviceDesc
-        //db.execSQL("CREATE TABLE " + DatabaseVaribles.SERVICE_TABLE + " (serviceId primary key auto_increment, businessId, serviceType, serviceName, serviceDesc, foreign key (businessId) references business_table (email));");
-        String command = "CREATE TABLE " + DatabaseVaribles.SERVICE_TABLE + " (serviceId INTEGER PRIMARY KEY AUTOINCREMENT, businessId TEXT NOT NULL, serviceType TEXT NOT NULL, serviceName TEXT NOT NULL, serviceDesc TEXT NOT NULL, FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email));";
+        //ORDER: serviceId -> businessId-> serviceType -> serviceDesc
+        //db.execSQL("CREATE TABLE " + DatabaseVaribles.SERVICE_TABLE + " (serviceId primary key auto_increment, businessId, serviceType, serviceDesc, foreign key (businessId) references business_table (email));");
+        String command = "CREATE TABLE " + DatabaseVaribles.SERVICE_TABLE + " (serviceId INTEGER PRIMARY KEY AUTOINCREMENT, businessId TEXT NOT NULL, serviceType TEXT NOT NULL, serviceDesc TEXT NOT NULL, FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email));";
         db.execSQL(command);
         Log.d("DEBUG", "Created service table");
     }
@@ -50,7 +51,6 @@ public class ServiceDatabase
         int sId;
         String bId;
         String sType;
-        String sName;
         String sDesc;
 
         if (cursor.moveToFirst()) //If there was something there
@@ -61,28 +61,48 @@ public class ServiceDatabase
                 sId = cursor.getInt(cursor.getColumnIndex("serviceId"));
                 bId = cursor.getString(cursor.getColumnIndex("businessId"));
                 sType = cursor.getString(cursor.getColumnIndex("serviceType"));
-                sName = cursor.getString(cursor.getColumnIndex("serviceName"));
                 sDesc = cursor.getString(cursor.getColumnIndex("serviceDesc"));
 
                 //Make a new Service object given the information (put in array)
-                listOfServices.add(new Service(sId, bId, sType, sName, sDesc));
+                listOfServices.add(new Service(sId, bId, sType, sDesc));
             }
             while (cursor.moveToNext()); //Until there are none left
+
+            db.close(); //CLOSE
+
+            return listOfServices;
         }
-
-        db.close(); //CLOSE
-
-        return listOfServices;
+        return null;
     }
 
-    public void createService(String bId, String sType, String sName, String sDesc) // Creates a service in the database with the given info
+    public void createService(String bId, String sType, String sDesc) // Creates a service in the database with the given info
     {
         SQLiteDatabase db = ctx.getWritableDatabase();
-        String command = "INSERT INTO " + DatabaseVaribles.SERVICE_TABLE + " (businessId, serviceType, serviceName, serviceDesc) VALUES ('" + bId + "','" + sType + "','" + sName + "','" + sDesc + "');";
+        String command = "INSERT INTO " + DatabaseVaribles.SERVICE_TABLE + " (businessId, serviceType, serviceDesc) VALUES ('" + bId + "','" + sType + "','" + sDesc + "');";
         db.execSQL(command);
         db.close(); //CLOSE
     }
 
-    //UPDATE
-    //DELETE
+    public void updateService(String type, String description, int i) // Updates the service with the given info. ServiceId not included (primary key)
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        String updateCommand = "UPDATE " + DatabaseVaribles.SERVICE_TABLE + " SET businessId = '" + Session.getBusiness().getEmail() + "', serviceType = '" + type + "' , serviceDesc = '" + description + "' WHERE serviceId = '" + i + "';";
+        db.execSQL(updateCommand); //Execute
+        db.close(); //CLOSE
+    }
+
+    public void deleteService(int i)
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        //Deletes the service with the given serviceId (i) from the business table
+        db.execSQL("DELETE FROM " + DatabaseVaribles.SERVICE_TABLE + " WHERE serviceId = '" + i + "';");
+        db.close(); //CLOSE
+    }
+
+    public void deleteALLServices() //I used this to just get rid of all services since I changed services
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        db.execSQL("DELETE FROM " + DatabaseVaribles.SERVICE_TABLE + ";");
+        db.close(); //CLOSE
+    }
 }
