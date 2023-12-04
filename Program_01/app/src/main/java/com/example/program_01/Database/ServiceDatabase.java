@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.program_01.Controllers.Session;
 import com.example.program_01.Models.Business;
 import com.example.program_01.Models.Service;
 
@@ -82,8 +83,21 @@ public class ServiceDatabase
         db.close(); //CLOSE
     }
 
-    //UPDATE
-    //DELETE
+    public void updateService(String type, String description, int i) // Updates the service with the given info. ServiceId not included (primary key)
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        String updateCommand = "UPDATE " + DatabaseVaribles.SERVICE_TABLE + " SET businessId = '" + Session.getBusiness().getEmail() + "', serviceType = '" + type + "' , serviceDesc = '" + description + "' WHERE serviceId = '" + i + "';";
+        db.execSQL(updateCommand); //Execute
+        db.close(); //CLOSE
+    }
+
+    public void deleteService(int i)
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        //Deletes the service with the given serviceId (i) from the business table
+        db.execSQL("DELETE FROM " + DatabaseVaribles.SERVICE_TABLE + " WHERE serviceId = '" + i + "';");
+        db.close(); //CLOSE
+    }
 
     public void deleteALLServices() //I used this to just get rid of all services since I changed services
     {

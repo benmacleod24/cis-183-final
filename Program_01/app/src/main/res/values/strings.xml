@@ -2,11 +2,11 @@
     <string name="app_name">Program_01</string>
     
     <string-array name="serviceTypes">
-        <item>Oil Change</item>
-        <item>Repairs</item>
-        <item>Tuning</item>
-        <item>Detailing</item>
-        <item>Towing</item>
-        <item>Roadside Assistance</item>
+        <item>OIL CHANGE</item>
+        <item>REPAIRS</item>
+        <item>TUNING</item>
+        <item>DETAILING</item>
+        <item>TOWING</item>
+        <item>ROADSIDE ASSISTANCE</item>
     </string-array>
 </resources>

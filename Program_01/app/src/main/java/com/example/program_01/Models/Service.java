@@ -1,14 +1,16 @@
 package com.example.program_01.Models;
 
-public class Service
+import java.io.Serializable;
+
+public class Service implements Serializable
 {
     //Access these by doing Service.SERVICE_TYPE....
-    public static String SERVICE_TYPE_OIL_CHANGE = "SERVICE_OIL_CHANGE";
-    public static String SERVICE_TYPE_REPAIRS = "SERVICE_REPAIRS";
-    public static String SERVICE_TYPE_TUNING = "SERVICE_TUNING";
-    public static String SERVICE_TYPE_DETAILING = "SERVICE_DETAILING";
-    public static String SERVICE_TYPE_TOWING = "SERVICE_TOWING";
-    public static String SERVICE_TYPE_ROADSIDE_ASSISTANCE = "SERVICE_ROADSIDE_ASSISTANCE";
+    public static String SERVICE_TYPE_OIL_CHANGE = "OIL CHANGE";
+    public static String SERVICE_TYPE_REPAIRS = "REPAIRS";
+    public static String SERVICE_TYPE_TUNING = "TUNING";
+    public static String SERVICE_TYPE_DETAILING = "DETAILING";
+    public static String SERVICE_TYPE_TOWING = "TOWING";
+    public static String SERVICE_TYPE_ROADSIDE_ASSISTANCE = "ROADSIDE ASSISTANCE";
 
     private int serviceId; //Auto Incrementing
     private String businessId; //Business Email (foreign key)

@@ -108,27 +108,27 @@ public class createService extends AppCompatActivity
                     //Must make service through database first, then read services later because serviceId is auto incrementing
                     //No other way to do this really other than hardcode it
                     //(There technically is but it'll take too long and I don't want to do it)
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Oil Change"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("OIL CHANGE"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_OIL_CHANGE, sDesc);
                     }
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Repairs"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("REPAIRS"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_REPAIRS, sDesc);
                     }
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Tuning"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("TUNING"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_TUNING, sDesc);
                     }
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Detailing"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("DETAILING"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_DETAILING, sDesc);
                     }
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Towing"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("TOWING"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_TOWING, sDesc);
                     }
-                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("Roadside Assistance"))
+                    if (sp_j_cs_serviceType.getSelectedItem().toString().equals("ROADSIDE ASSISTANCE"))
                     {
                         serviceDb.createService(Session.getBusiness().getEmail(), Service.SERVICE_TYPE_ROADSIDE_ASSISTANCE, sDesc);
                     }
