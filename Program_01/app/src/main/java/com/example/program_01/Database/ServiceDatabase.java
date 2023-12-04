@@ -72,7 +72,7 @@ public class ServiceDatabase
 
             return listOfServices;
         }
-        return null;
+        return new ArrayList<Service>();
     }
 
     public void createService(String bId, String sType, String sDesc) // Creates a service in the database with the given info
@@ -104,5 +104,33 @@ public class ServiceDatabase
         SQLiteDatabase db = ctx.getWritableDatabase();
         db.execSQL("DELETE FROM " + DatabaseVaribles.SERVICE_TABLE + ";");
         db.close(); //CLOSE
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<Service> getAllServicesByType(String serviceType)
+    {
+        SQLiteDatabase db = ctx.getReadableDatabase();
+        ArrayList<Service> listOfServices = new ArrayList<Service>();
+
+        String sql = "SELECT * FROM " + DatabaseVaribles.SERVICE_TABLE + " WHERE serviceType = '" + serviceType + "';";
+        Cursor c = db.rawQuery(sql, null);
+
+        if (c.moveToNext())
+        {
+            do
+            {
+                int sId = c.getInt(c.getColumnIndex("serviceId"));
+                String bId = c.getString(c.getColumnIndex("businessId"));
+                String sType = c.getString(c.getColumnIndex("serviceType"));
+                String sDesc = c.getString(c.getColumnIndex("serviceDesc"));
+
+                listOfServices.add(new Service(sId, bId, sType, sDesc));
+            }
+            while (c.moveToNext());
+        }
+
+        db.close();
+        return listOfServices;
+
     }
 }
