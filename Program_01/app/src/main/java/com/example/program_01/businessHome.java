@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.program_01.Adaptors.MyServicesAdapter;
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.OrderDatabase;
@@ -18,7 +19,6 @@ import com.example.program_01.Database.ServiceDatabase;
 import com.example.program_01.Models.Order;
 import com.example.program_01.Models.Service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class businessHome extends AppCompatActivity
@@ -26,10 +26,15 @@ public class businessHome extends AppCompatActivity
     //GUI
     Button btn_j_createService;
     ListView lv_j_bh_myServices;
+    ImageView btn_j_bh_seeOrders;
+    ImageView btn_j_bh_thisIntent;
+    ImageView btn_j_bh_editProfile;
 
     //Intent Stuff
     Intent createServiceIntent;
     Intent editServiceIntent;
+    Intent businessHomeIntent;
+    Intent editBizProfileIntent;
 
     //Database Stuff if we even need it here
     BusinessDatabase businessDb;
@@ -52,6 +57,9 @@ public class businessHome extends AppCompatActivity
         //GUI
         btn_j_createService = findViewById(R.id.btn_v_createService);
         lv_j_bh_myServices = findViewById(R.id.lv_v_bh_myServices);
+        btn_j_bh_seeOrders = findViewById(R.id.btn_v_bh_seeOrders);
+        btn_j_bh_thisIntent = findViewById(R.id.btn_v_ebp_businessHome);
+        btn_j_bh_editProfile = findViewById(R.id.btn_v_bh_editProfile);
 
         //Database
         serviceDb = new ServiceDatabase(this);
@@ -65,6 +73,8 @@ public class businessHome extends AppCompatActivity
         //Intents
         createServiceIntent = new Intent(businessHome.this, createService.class);
         editServiceIntent = new Intent(businessHome.this, editService.class);
+        businessHomeIntent = new Intent(businessHome.this, businessHome.class);
+        editBizProfileIntent = new Intent(businessHome.this, editBusinessProfile.class);
 
 
         //FUNCTIONS
@@ -72,6 +82,9 @@ public class businessHome extends AppCompatActivity
         fillListView();
         createServiceButtonEvent();
         listViewOnClickListener();
+        seeOrdersButtonClick();
+        thisIntentButtonClick();
+        editProfileButtonClick();
     }
 
     private void testOrders()
@@ -113,5 +126,40 @@ public class businessHome extends AppCompatActivity
     {
         adapter = new MyServicesAdapter(this, listOfMyServices);
         lv_j_bh_myServices.setAdapter(adapter);
+    }
+
+    public void seeOrdersButtonClick()
+    {
+        btn_j_bh_seeOrders.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Pressed:", "=====See Orders Button Press (Image)=====");
+
+
+
+            }
+        });
+    }
+
+    public void editProfileButtonClick()
+    {
+        btn_j_bh_editProfile.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Pressed:", "=====Edit Profile Button Press (Image)=====");
+
+                startActivity(editBizProfileIntent);
+
+            }
+        });
+    }
+
+    public void thisIntentButtonClick()
+    {
+        startActivity(businessHomeIntent);
     }
 }

@@ -98,10 +98,10 @@ public class BusinessDatabase
         db.close(); //CLOSE
     }
 
-    public void updateBusiness(Business b) // Updates the business with the given info from the Business object b that was caught. Email not included (primary key)
+    public void updateBusiness(String e, String newName, String newNum, String newPass) // Updates the business with the given info
     {
         SQLiteDatabase db = ctx.getWritableDatabase();
-        String updateCommand = "UPDATE " + DatabaseVaribles.BUSINESS_TABLE + " SET pasword = '" + b.getPassword() + "' , name = '" + b.getName() + "' , number = '" + b.getNumber() + "' WHERE email = '" + b.getEmail() + "';";
+        String updateCommand = "UPDATE " + DatabaseVaribles.BUSINESS_TABLE + " SET pasword = '" + newPass + "' , name = '" + newName + "' , number = '" + newNum + "' WHERE email = '" + e + "';";
         db.execSQL(updateCommand); //Execute
         db.close(); //CLOSE
     }

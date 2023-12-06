@@ -10,47 +10,66 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="107dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="107dp"
         android:text="Business Home"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_v_createService"
-        app:layout_constraintStart_toStartOf="@+id/btn_v_createService"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_v_createService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="102dp"
         android:text="Create Service"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/lv_v_bh_myServices"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
-        android:text="bottomtaskbarthing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv_v_bh_myServices" />
-
     <ListView
         android:id="@+id/lv_v_bh_myServices"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        android:layout_width="412dp"
+        android:layout_height="525dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_ebp_businessHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_v_createService" />
+
+    <ImageView
+        android:id="@+id/btn_v_ebp_businessHome"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_v_bh_editProfile"
+        app:layout_constraintStart_toEndOf="@+id/btn_v_bh_seeOrders"
+        app:srcCompat="@drawable/home_icon" />
+
+    <ImageView
+        android:id="@+id/btn_v_bh_seeOrders"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ticket_alt" />
+
+    <ImageView
+        android:id="@+id/btn_v_bh_editProfile"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/user_cicrle_duotone_line" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

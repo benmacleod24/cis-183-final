@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Program_01</string>
-    
+
     <string-array name="serviceTypes">
         <item>OIL CHANGE</item>
         <item>REPAIRS</item>

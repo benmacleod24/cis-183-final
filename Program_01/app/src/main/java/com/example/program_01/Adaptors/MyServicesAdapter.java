@@ -1,4 +1,4 @@
-package com.example.program_01;
+package com.example.program_01.Adaptors;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.program_01.Database.ServiceDatabase;
 import com.example.program_01.Models.Service;
+import com.example.program_01.R;
 
 import java.util.ArrayList;
 
