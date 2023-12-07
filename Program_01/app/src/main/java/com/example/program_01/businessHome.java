@@ -23,17 +23,15 @@ import java.util.ArrayList;
 
 public class businessHome extends AppCompatActivity
 {
-    //GUI
+//    //GUI
     Button btn_j_createService;
     ListView lv_j_bh_myServices;
     ImageView btn_j_bh_seeOrders;
-    ImageView btn_j_bh_thisIntent;
     ImageView btn_j_bh_editProfile;
 
     //Intent Stuff
     Intent createServiceIntent;
     Intent editServiceIntent;
-    Intent businessHomeIntent;
     Intent editBizProfileIntent;
 
     //Database Stuff if we even need it here
@@ -54,11 +52,10 @@ public class businessHome extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_home);
 
-        //GUI
+//        //GUI
         btn_j_createService = findViewById(R.id.btn_v_createService);
         lv_j_bh_myServices = findViewById(R.id.lv_v_bh_myServices);
         btn_j_bh_seeOrders = findViewById(R.id.btn_v_bh_seeOrders);
-        btn_j_bh_thisIntent = findViewById(R.id.btn_v_ebp_businessHome);
         btn_j_bh_editProfile = findViewById(R.id.btn_v_bh_editProfile);
 
         //Database
@@ -73,7 +70,6 @@ public class businessHome extends AppCompatActivity
         //Intents
         createServiceIntent = new Intent(businessHome.this, createService.class);
         editServiceIntent = new Intent(businessHome.this, editService.class);
-        businessHomeIntent = new Intent(businessHome.this, businessHome.class);
         editBizProfileIntent = new Intent(businessHome.this, editBusinessProfile.class);
 
 
@@ -83,7 +79,6 @@ public class businessHome extends AppCompatActivity
         createServiceButtonEvent();
         listViewOnClickListener();
         seeOrdersButtonClick();
-        thisIntentButtonClick();
         editProfileButtonClick();
     }
 
@@ -156,10 +151,5 @@ public class businessHome extends AppCompatActivity
 
             }
         });
-    }
-
-    public void thisIntentButtonClick()
-    {
-        startActivity(businessHomeIntent);
     }
 }

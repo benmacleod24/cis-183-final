@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
 import com.example.program_01.Database.Database;
+import com.example.program_01.Database.ServiceDatabase;
 import com.example.program_01.Database.UsersDatabase;
 import com.example.program_01.Models.Business;
+import com.example.program_01.Models.Service;
 import com.example.program_01.Models.User;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class CreateBusiness extends AppCompatActivity
     //Database Stuff
     BusinessDatabase businessDb;
     UsersDatabase usersDb;
+    ServiceDatabase serviceDb;
 
     //ArrayList Stuff
     ArrayList<Business> listOfBusinesses;
@@ -60,6 +63,7 @@ public class CreateBusiness extends AppCompatActivity
         //Database Stuff
         businessDb = new BusinessDatabase(this);
         usersDb = new UsersDatabase(this);
+        serviceDb = new ServiceDatabase(this);
 
         //Make ArrayList and fill data from database into it to check for unique email
         listOfBusinesses = new ArrayList<Business>();
@@ -123,6 +127,8 @@ public class CreateBusiness extends AppCompatActivity
 
                         //LOG IN AND GO TO BUSINESS HOME PAGE
                         Session.login(b);
+                        serviceDb.createService(b.getEmail(), Service.SERVICE_TYPE_TOWING, "Towing Service");
+                        serviceDb.createService(b.getEmail(), Service.SERVICE_TYPE_ROADSIDE_ASSISTANCE, "Roadside Assistance Service");
                         startActivity(bussinessHomeIntent);
                     }
                     else
