@@ -101,8 +101,7 @@ public class BusinessDatabase
     public void updateBusiness(String e, String newName, String newNum, String newPass) // Updates the business with the given info
     {
         SQLiteDatabase db = ctx.getWritableDatabase();
-        String updateCommand = "UPDATE " + DatabaseVaribles.BUSINESS_TABLE + " SET pasword = '" + newPass + "' , name = '" + newName + "' , number = '" + newNum + "' WHERE email = '" + e + "';";
-        //String updateCommand = "UPDATE " + DatabaseVaribles.SERVICE_TABLE + " SET businessId = '" + Session.getBusiness().getEmail() + "', serviceType = '" + type + "' , serviceDesc = '" + description + "' WHERE serviceId = '" + i + "';";
+        String updateCommand = "UPDATE " + DatabaseVaribles.BUSINESS_TABLE + " SET password = '" + newPass + "', name = '" + newName + "', number = '" + newNum + "' WHERE email = '" + e + "';";
         db.execSQL(updateCommand); //Execute
         db.close(); //CLOSE
     }

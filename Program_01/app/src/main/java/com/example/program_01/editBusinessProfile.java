@@ -22,6 +22,7 @@ public class editBusinessProfile extends AppCompatActivity
     EditText et_j_ebp_number;
     EditText et_j_ebp_password;
     Button btn_j_ebp_saveChanges;
+    Button btn_j_ebp_deleteBusiness;
     ImageView btn_j_ebp_seeOrders;
     ImageView btn_j_ebp_businessHome;
     TextView tv_j_ebp_error;
@@ -30,6 +31,7 @@ public class editBusinessProfile extends AppCompatActivity
     //INTENTS
     Intent businessHomeIntent;
     Intent seeOrdersIntent;
+    Intent mainActivityIntent;
 
     //DATABASE
     BusinessDatabase businessDb;
@@ -46,6 +48,7 @@ public class editBusinessProfile extends AppCompatActivity
         et_j_ebp_number = findViewById(R.id.et_v_ebp_number);
         et_j_ebp_password = findViewById(R.id.et_v_ebp_password);
         btn_j_ebp_saveChanges = findViewById(R.id.btn_v_ebp_saveChanges);
+        btn_j_ebp_deleteBusiness = findViewById(R.id.btn_v_ebp_deleteBusiness);
         btn_j_ebp_seeOrders = findViewById(R.id.btn_v_ebp_seeOrders);
         btn_j_ebp_businessHome = findViewById(R.id.btn_v_ebp_businessHome);
         tv_j_ebp_error = findViewById(R.id.tv_v_ebp_error);
@@ -53,6 +56,7 @@ public class editBusinessProfile extends AppCompatActivity
         //INTENTS
         businessHomeIntent = new Intent(editBusinessProfile.this, businessHome.class);
         //seeOrdersIntent = new Intent(editBusinessProfile.this, SEE ORDERS INTENT.CLASS);
+        mainActivityIntent = new Intent(editBusinessProfile.this, MainActivity.class);
 
         //DATABASE
         businessDb = new BusinessDatabase(this);
@@ -62,6 +66,7 @@ public class editBusinessProfile extends AppCompatActivity
         saveChangesButtonClick();
         businessHomeButtonClick();
         seeOrdersButtonClick();
+        deleteBusinessButtonClick();
     }
 
     public void fillTextBoxes()
@@ -98,6 +103,20 @@ public class editBusinessProfile extends AppCompatActivity
 
                     startActivity(businessHomeIntent);
                 }
+            }
+        });
+    }
+
+    public void deleteBusinessButtonClick()
+    {
+        btn_j_ebp_deleteBusiness.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Pressed:", "=====Deleting Business=====");
+                businessDb.deleteBusiness(Session.getBusiness().getEmail());
+                startActivity(mainActivityIntent);
             }
         });
     }
