@@ -2,10 +2,13 @@ package com.example.program_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.program_01.Adaptors.BusinessOrderAdaptor;
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.OrderDatabase;
 import com.example.program_01.Models.Order;
@@ -18,6 +21,8 @@ public class BusinessOrders extends AppCompatActivity {
     ArrayList<Order> listOfOrders;
 
     TextView txt_orderCount;
+    ListView listView;
+    BusinessOrderAdaptor adaptor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +40,17 @@ public class BusinessOrders extends AppCompatActivity {
     private void mountElements()
     {
         txt_orderCount = findViewById(R.id.txt_bizOrders_orderCount);
+        listView = findViewById(R.id.lv_bizOrders_list);
     }
 
+    @SuppressLint("SetTextI18n")
     private void populateData()
     {
         txt_orderCount.setText("Order Count: " + listOfOrders.size());
+
+        adaptor = new BusinessOrderAdaptor(this, listOfOrders);
+        listView.setAdapter(adaptor);
+
     }
 
     private void testOrders()

@@ -133,4 +133,26 @@ public class ServiceDatabase
         return listOfServices;
 
     }
+
+    @SuppressLint("Range")
+    public Service getServiceById(int serviceId)
+    {
+        SQLiteDatabase db = ctx.getReadableDatabase();
+        Service _service = null;
+
+        String sql = "SELECT * FROM " + DatabaseVaribles.SERVICE_TABLE + " WHERE serviceID = '" + serviceId + "';";
+        Cursor c = db.rawQuery(sql, null);
+
+        if (c.moveToFirst())
+        {
+            int sId = c.getInt(c.getColumnIndex("serviceId"));
+            String bId = c.getString(c.getColumnIndex("businessId"));
+            String sType = c.getString(c.getColumnIndex("serviceType"));
+            String sDesc = c.getString(c.getColumnIndex("serviceDesc"));
+
+            _service = new Service(sId, bId, sType, sDesc);
+        }
+
+        return  _service;
+    }
 }
