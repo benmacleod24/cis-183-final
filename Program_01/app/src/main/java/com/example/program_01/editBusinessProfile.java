@@ -55,7 +55,7 @@ public class editBusinessProfile extends AppCompatActivity
 
         //INTENTS
         businessHomeIntent = new Intent(editBusinessProfile.this, businessHome.class);
-        //seeOrdersIntent = new Intent(editBusinessProfile.this, SEE ORDERS INTENT.CLASS);
+        seeOrdersIntent = new Intent(editBusinessProfile.this, BusinessOrders.class);
         mainActivityIntent = new Intent(editBusinessProfile.this, MainActivity.class);
 
         //DATABASE
@@ -142,6 +142,7 @@ public class editBusinessProfile extends AppCompatActivity
             public void onClick(View v)
             {
                 Log.d("Button Pressed:", "=====See Orders (EBP) Button Pressed=====");
+                startActivity(seeOrdersIntent);
             }
         });
     }

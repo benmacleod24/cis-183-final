@@ -33,6 +33,7 @@ public class businessHome extends AppCompatActivity
     Intent createServiceIntent;
     Intent editServiceIntent;
     Intent editBizProfileIntent;
+    Intent ordersIntent;
 
     //Database Stuff if we even need it here
     BusinessDatabase businessDb;
@@ -71,6 +72,7 @@ public class businessHome extends AppCompatActivity
         createServiceIntent = new Intent(businessHome.this, createService.class);
         editServiceIntent = new Intent(businessHome.this, editService.class);
         editBizProfileIntent = new Intent(businessHome.this, editBusinessProfile.class);
+        ordersIntent = new Intent(businessHome.this, BusinessOrders.class);
 
 
         //FUNCTIONS
@@ -78,7 +80,7 @@ public class businessHome extends AppCompatActivity
         fillListView();
         createServiceButtonEvent();
         listViewOnClickListener();
-        seeOrdersButtonClick();
+        onViewOrderClick();
         editProfileButtonClick();
     }
 
@@ -123,21 +125,6 @@ public class businessHome extends AppCompatActivity
         lv_j_bh_myServices.setAdapter(adapter);
     }
 
-    public void seeOrdersButtonClick()
-    {
-        btn_j_bh_seeOrders.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Log.d("Button Pressed:", "=====See Orders Button Press (Image)=====");
-
-
-
-            }
-        });
-    }
-
     public void editProfileButtonClick()
     {
         btn_j_bh_editProfile.setOnClickListener(new View.OnClickListener()
@@ -148,6 +135,21 @@ public class businessHome extends AppCompatActivity
                 Log.d("Button Pressed:", "=====Edit Profile Button Press (Image)=====");
 
                 startActivity(editBizProfileIntent);
+
+            }
+        });
+    }
+
+    public void onViewOrderClick()
+    {
+        btn_j_bh_seeOrders.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Pressed:", "=====Edit Profile Button Press (Image)=====");
+
+                startActivity(ordersIntent);
 
             }
         });
