@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class editService extends AppCompatActivity
     TextView tv_j_es_descError;
     Button btn_j_es_editService;
     Button btn_j_es_deleteService;
-    Button btn_j_es_back;
+    ImageView btn_j_es_back;
 
     //OTHER
     Service service;
@@ -69,8 +70,8 @@ public class editService extends AppCompatActivity
         sp_j_es_type.setAdapter(adapter);
 
         sp_j_es_type.setSelection(adapter.getPosition(service.getServiceType()));
-        Log.d("================", service.getServiceType());
-        Log.d("==============", String.valueOf(adapter.getPosition(service.getServiceType())));
+        //Log.d("================", service.getServiceType());
+        //Log.d("==============", String.valueOf(adapter.getPosition(service.getServiceType())));
     }
 
     public void spinnerItemSelectEvent()

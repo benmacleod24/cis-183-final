@@ -6,98 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".editService">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="147dp"
+        android:text="Edit Service"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <Spinner
+        android:id="@+id/sp_v_es_type"
+        android:layout_width="355dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:textAlignment="textStart"
+        android:tooltipText="Select Your Service"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
     <Button
         android:id="@+id/btn_v_es_deleteService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="109dp"
+        android:backgroundTint="@color/red3"
         android:text="Delete Service"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_v_es_back"
-        app:layout_constraintEnd_toEndOf="@+id/tv_v_es_descError"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_es_editService" />
-
-    <Button
-        android:id="@+id/btn_v_es_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="78dp"
-        android:text="Back"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_es_deleteService" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_es_editService" />
 
     <Button
         android:id="@+id/btn_v_es_editService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="122dp"
+        android:backgroundTint="@color/red1"
         android:text="Edit Service"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_v_es_deleteService"
-        app:layout_constraintStart_toStartOf="@+id/btn_v_es_deleteService"
-        app:layout_constraintTop_toBottomOf="@+id/tv_v_es_descError" />
-
-    <Spinner
-        android:id="@+id/sp_v_es_type"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="29dp"
-        android:textAlignment="textStart"
-        android:tooltipText="Select Your Service"
-        app:layout_constraintBottom_toTopOf="@+id/et_v_es_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_v_es_descError" />
+
+    <TextView
+        android:id="@+id/tv_v_es_descError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="96dp"
+        android:text="*Please keep description filled out*"
+        android:textColor="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_v_es_desc" />
 
     <EditText
         android:id="@+id/et_v_es_desc"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="351dp"
+        android:layout_height="233dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="12dp"
         android:ems="10"
         android:gravity="top|left"
         android:hint="Describe Your Service"
         android:inputType="textMultiLine"
         android:textAlignment="viewStart"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_v_es_descError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_v_es_type" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="54dp"
-        android:text="Edit Service"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/sp_v_es_type"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="428dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="-5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/header" />
 
-    <TextView
-        android:id="@+id/tv_v_es_descError"
+    <ImageView
+        android:id="@+id/btn_v_es_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="*Please keep description filled out*"
-        android:textColor="#FF0000"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/btn_v_es_editService"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="-65dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_v_es_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="102dp"
         android:text="Create Service"
+        android:backgroundTint="@color/red2"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

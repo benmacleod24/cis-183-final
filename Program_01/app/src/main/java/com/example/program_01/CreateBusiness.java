@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.program_01.Controllers.Session;
@@ -31,7 +32,7 @@ public class CreateBusiness extends AppCompatActivity
     TextView tv_j_cb_fieldsError; //All fields aren't filled out error
     TextView tv_j_cb_emailError; //Email already in use error
     Button btn_j_cb_createBusiness;
-    Button btn_j_cb_back;
+    ImageView btn_j_cb_back;
 
     //Intent Stuff
     Intent mainActivityIntent;
@@ -71,7 +72,7 @@ public class CreateBusiness extends AppCompatActivity
         //TEST
         for (int i = 0; i < listOfBusinesses.size(); i++)
         {
-            Log.d("Name of Business " + i + ":", listOfBusinesses.get(i).getName() + ", " + listOfBusinesses.get(i).getEmail());
+            Log.d("Name of Business " + i + ":", listOfBusinesses.get(i).getEmail() + ", " + listOfBusinesses.get(i).getPassword());
         }
 
         //Intent Stuff

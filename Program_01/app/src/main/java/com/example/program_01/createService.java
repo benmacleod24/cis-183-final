@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ public class createService extends AppCompatActivity
     EditText et_j_cs_desc;
     TextView tv_j_cs_fieldsError;
     Button btn_j_cs_createService;
-    Button btn_j_cs_back;
+    ImageView btn_j_cs_back;
     Spinner sp_j_cs_serviceType;
 
     //Intent Stuff
