@@ -31,6 +31,7 @@ public class editService extends AppCompatActivity
     //OTHER
     Service service;
     Intent bussinessHomeIntent;
+    Intent deleteConfirmationIntent;
     ServiceDatabase serviceDb;
 
     @Override
@@ -48,6 +49,7 @@ public class editService extends AppCompatActivity
 
         //OTHER
         bussinessHomeIntent = new Intent(editService.this, businessHome.class);
+        deleteConfirmationIntent = new Intent(editService.this, DeleteConfirmation.class);
 
         Intent cameFrom = getIntent();
         service = (Service) cameFrom.getSerializableExtra("myService");
@@ -124,12 +126,10 @@ public class editService extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Log.d("Button Press: ", "===Delete Service Button (From Edit Service Intent)===");
-
-                //CONFIRM (ARE YOU SURE YOU WANT TO DELETE?)
-                serviceDb.deleteService(service.getServiceId());
-
-                startActivity(bussinessHomeIntent);
+                Log.d("Button Press: ", "===Moving to Delete Confirmation===");
+                deleteConfirmationIntent.putExtra("cameFrom", "editServiceIntent");
+                deleteConfirmationIntent.putExtra("serviceToDelete", service);
+                startActivity(deleteConfirmationIntent);
             }
         });
     }

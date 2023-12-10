@@ -1,6 +1,8 @@
 package com.example.program_01.Models;
 
-public class Business
+import java.io.Serializable;
+
+public class Business implements Serializable
 {
     private String email;
     private String password;

@@ -32,6 +32,7 @@ public class editBusinessProfile extends AppCompatActivity
     Intent businessHomeIntent;
     Intent seeOrdersIntent;
     Intent mainActivityIntent;
+    Intent deleteConfirmationIntent;
 
     //DATABASE
     BusinessDatabase businessDb;
@@ -57,6 +58,7 @@ public class editBusinessProfile extends AppCompatActivity
         businessHomeIntent = new Intent(editBusinessProfile.this, businessHome.class);
         seeOrdersIntent = new Intent(editBusinessProfile.this, BusinessOrders.class);
         mainActivityIntent = new Intent(editBusinessProfile.this, MainActivity.class);
+        deleteConfirmationIntent = new Intent(editBusinessProfile.this, DeleteConfirmation.class);
 
         //DATABASE
         businessDb = new BusinessDatabase(this);
@@ -114,9 +116,10 @@ public class editBusinessProfile extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Log.d("Button Pressed:", "=====Deleting Business=====");
-                businessDb.deleteBusiness(Session.getBusiness().getEmail());
-                startActivity(mainActivityIntent);
+                Log.d("Button Pressed:", "=====Moving to Confirm delete=====");
+                deleteConfirmationIntent.putExtra("cameFrom", "editBusinessProfile");
+                startActivity(deleteConfirmationIntent);
+                //businessDb.deleteBusiness(Session.getBusiness().getEmail());
             }
         });
     }
