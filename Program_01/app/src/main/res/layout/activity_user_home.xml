@@ -80,6 +80,7 @@
         android:layout_height="70dp"
         android:layout_marginBottom="293dp"
         android:background="#B1423E"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/btn_emergency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,12 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txt_cellBizOrder_orderId"
+        android:id="@+id/txt_cellBizOrder_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Order#: 1"
+        android:text="Email"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,9 +20,19 @@
         android:id="@+id/txt_cellBizOrder_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:text="Service:"
-        app:layout_constraintStart_toStartOf="@+id/txt_cellBizOrder_orderId"
-        app:layout_constraintTop_toBottomOf="@+id/txt_cellBizOrder_orderId" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cellBizOrder_email" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_cellBizOrder_email"
+        app:layout_constraintStart_toStartOf="@+id/txt_cellBizOrder_email"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cellBizOrder_service" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

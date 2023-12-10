@@ -75,5 +75,15 @@ public class EmergencyPage extends AppCompatActivity {
             Intent userHomeIntent = new Intent(EmergencyPage.this, UserHome.class);
             startActivity(userHomeIntent);
         });
+
+        btn_j_menu_orders.setOnClickListener(view -> {
+            Intent userOrderIntent = new Intent(EmergencyPage.this, UserOrders.class);
+            startActivity(userOrderIntent);
+        });
+
+        btn_j_menu_profile.setOnClickListener(view -> {
+            Intent profileIntent = new Intent(EmergencyPage.this, UserProfile.class);
+            startActivity(profileIntent);
+        });
     }
 }
