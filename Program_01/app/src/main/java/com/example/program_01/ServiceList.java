@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.program_01.Adaptors.ServiceListAdaptor;
@@ -18,6 +20,8 @@ public class ServiceList extends AppCompatActivity {
     String serviceCategory;
     ServiceDatabase serviceDb;
     ListView listView;
+    ImageView btn_j_sl_back;
+    Intent emergencyPageIntent;
     ServiceListAdaptor adaptor;
     ArrayList<Service> listOfServices;
 
@@ -31,7 +35,11 @@ public class ServiceList extends AppCompatActivity {
         listOfServices = serviceDb.getAllServicesByType(serviceCategory);
 
         listView = findViewById(R.id.lv_serviceLs_list);
+        btn_j_sl_back = findViewById(R.id.btn_v_sl_back);
+        emergencyPageIntent = new Intent(ServiceList.this, EmergencyPage.class);
+
         fillAdaptor();
+        backButtonClick();
     }
 
     private void getCategoryFromExtra()
@@ -47,5 +55,18 @@ public class ServiceList extends AppCompatActivity {
     {
         adaptor = new ServiceListAdaptor(this, listOfServices);
         listView.setAdapter(adaptor);
+    }
+
+    private void backButtonClick()
+    {
+        btn_j_sl_back.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Press", "Moving to Emergency Page from Service List Page");
+                startActivity(emergencyPageIntent);
+            }
+        });
     }
 }
