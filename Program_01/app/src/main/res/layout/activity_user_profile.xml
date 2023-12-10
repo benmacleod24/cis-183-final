@@ -6,42 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
+    <ImageView
+        android:id="@+id/btn_v_up_home"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/home_icon" />
+
+    <ImageView
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/user_cicrle_duotone_line" />
+
+    <ImageView
+        android:id="@+id/btn_v_up_order"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ticket_alt" />
+
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="23dp"
-        android:text="First Name"
+        android:layout_marginTop="31dp"
+        android:text="Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_v_up_back" />
+        app:layout_constraintTop_toBottomOf="@+id/inp_v_up_firstName" />
 
     <EditText
         android:id="@+id/inp_v_up_lastName"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:layout_marginEnd="47dp"
         android:ems="10"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/inp_v_up_firstName"
-        app:layout_constraintTop_toTopOf="@+id/inp_v_up_firstName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name"
-        app:layout_constraintBottom_toTopOf="@+id/inp_v_up_lastName"
-        app:layout_constraintStart_toStartOf="@+id/inp_v_up_lastName" />
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="109dp"
+        android:text="First Name"
+        app:layout_constraintEnd_toStartOf="@+id/textView26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <EditText
         android:id="@+id/inp_v_up_firstName"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView27"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="68dp"
+        android:text="Last Name"
+        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <EditText
+        android:id="@+id/inp_v_up_password"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -53,36 +112,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/header" />
 
-    <ImageView
-        android:id="@+id/btn_v_up_back"
-        android:layout_width="76dp"
-        android:layout_height="71dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
     <Button
         android:id="@+id/btn_up_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="131dp"
         android:backgroundTint="@color/red1"
         android:text="Update Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_up_delete"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inp_v_up_password" />
 
     <Button
         android:id="@+id/btn_up_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="133dp"
         android:backgroundTint="@color/red2"
         android:text="Delete Account"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_up_update" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_up_update" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

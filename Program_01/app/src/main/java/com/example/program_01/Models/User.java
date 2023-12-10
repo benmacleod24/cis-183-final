@@ -20,6 +20,10 @@ public class User
     public String getLastName() {
         return lastName;
     }
+    public String getPassword()
+    {
+        return password;
+    }
 
     private String firstName;
     private String lastName;
@@ -35,8 +39,6 @@ public class User
         this.lastName = l;
         this.email = email;
     }
-
-
 
     public User(String email, String password, String f, String l)
     {

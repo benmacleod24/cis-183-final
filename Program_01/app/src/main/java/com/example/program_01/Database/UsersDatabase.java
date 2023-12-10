@@ -107,7 +107,7 @@ public class UsersDatabase
     public void updateUser(User _user)
     {
         SQLiteDatabase db = ctx.getWritableDatabase();
-        String query = "UPDATE " + DatabaseVaribles.USER_TABLE + " SET firstName = '" + _user.getFirstName() +"', lastName = '"+_user.getLastName()+"' WHERE email = '"+ _user.getEmail()+"';";
+        String query = "UPDATE " + DatabaseVaribles.USER_TABLE + " SET password = '" + _user.getPassword() + "', firstName = '" + _user.getFirstName() + "', lastName = '" + _user.getLastName() + "' WHERE email = '" + _user.getEmail() + "';";
         db.execSQL(query);
         db.close();
     }
