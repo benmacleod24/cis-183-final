@@ -7,6 +7,38 @@
     tools:context=".UserHome">
 
     <ImageView
+        android:id="@+id/btn_v_uh_home"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/home_icon" />
+
+    <ImageView
+        android:id="@+id/btn_v_uh_profile"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/user_cicrle_duotone_line" />
+
+    <ImageView
+        android:id="@+id/btn_v_uh_order"
+        android:layout_width="137dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ticket_alt" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -23,6 +55,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="253dp"
+        android:backgroundTint="@color/red2"
         android:text="Services"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +67,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/red2"
         android:text="Emergency"
         app:layout_constraintBottom_toTopOf="@+id/btn_services"
         app:layout_constraintEnd_toEndOf="parent"

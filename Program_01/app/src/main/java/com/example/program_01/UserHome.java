@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.program_01.Controllers.Session;
@@ -19,6 +20,10 @@ public class UserHome extends AppCompatActivity {
     Button btn_emergency;
     Button btn_services;
     OrderDatabase orderDb;
+
+    ImageView btn_j_menu_orders;
+    ImageView btn_j_menu_home;
+    ImageView btn_j_menu_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,13 @@ public class UserHome extends AppCompatActivity {
         btn_emergency = findViewById(R.id.btn_emergency);
         btn_services = findViewById(R.id.btn_services);
 
+        btn_j_menu_home = findViewById(R.id.btn_v_uh_home);
+        btn_j_menu_orders = findViewById(R.id.btn_v_uh_order);
+        btn_j_menu_profile = findViewById(R.id.btn_v_uh_home);
+
         onEmergencyClick();
         onServiceClick();
+        setupMenuClicks();
     }
 
     private void onEmergencyClick()
@@ -66,6 +76,14 @@ public class UserHome extends AppCompatActivity {
             Log.d("BTN_CLICK", "Moving to service page");
             Intent serviceIntent = new Intent(UserHome.this, ServicesPage.class);
             startActivity(serviceIntent);
+        });
+    }
+
+    private void setupMenuClicks()
+    {
+        btn_j_menu_home.setOnClickListener(view -> {
+            Intent userHomeIntent = new Intent(UserHome.this, UserHome.class);
+            startActivity(userHomeIntent);
         });
     }
 }
