@@ -23,6 +23,7 @@ public class UserProfile extends AppCompatActivity {
     EditText inp_firstName;
     EditText inp_lastName;
     OrderDatabase orderDb;
+    Intent deleteConfirmationIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class UserProfile extends AppCompatActivity {
         userdb = new UsersDatabase(this);
         orderDb = new OrderDatabase(this);
         user = userdb.getUserByEmail(Session.getUser().getEmail());
+
+        deleteConfirmationIntent = new Intent(UserProfile.this, DeleteConfirmation.class);
 
         setupElements();
     }
@@ -69,11 +72,9 @@ public class UserProfile extends AppCompatActivity {
     {
         btn_delete.setOnClickListener(view -> {
             if (Session.getUser() == null) return;
-            userdb.deleteUser(Session.getUser().getEmail());
-            orderDb.deleteUserOrders(Session.getUser().getEmail());
 
-            Intent mainAct = new Intent(UserProfile.this, MainActivity.class);
-            startActivity(mainAct);
+            deleteConfirmationIntent.putExtra("cameFrom", "userProfileIntent");
+            startActivity(deleteConfirmationIntent);
         });
     }
 

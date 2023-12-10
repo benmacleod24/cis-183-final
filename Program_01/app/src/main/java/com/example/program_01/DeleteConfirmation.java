@@ -10,7 +10,9 @@ import android.widget.Button;
 
 import com.example.program_01.Controllers.Session;
 import com.example.program_01.Database.BusinessDatabase;
+import com.example.program_01.Database.OrderDatabase;
 import com.example.program_01.Database.ServiceDatabase;
+import com.example.program_01.Database.UsersDatabase;
 import com.example.program_01.Models.Business;
 import com.example.program_01.Models.Service;
 
@@ -18,6 +20,8 @@ public class DeleteConfirmation extends AppCompatActivity
 {
     BusinessDatabase bizDb;
     ServiceDatabase servDb;
+    UsersDatabase userDb;
+    OrderDatabase orderDb;
     Intent businessHomeIntent;
     Intent userHomeIntent;
     Intent mainActivityIntent;
@@ -36,6 +40,8 @@ public class DeleteConfirmation extends AppCompatActivity
         btn_j_dc_no = findViewById(R.id.btn_v_dc_no);
         bizDb = new BusinessDatabase(this);
         servDb = new ServiceDatabase(this);
+        userDb = new UsersDatabase(this);
+        orderDb = new OrderDatabase(this);
         businessHomeIntent = new Intent(DeleteConfirmation.this, businessHome.class);
         userHomeIntent = new Intent(DeleteConfirmation.this, UserHome.class);
         mainActivityIntent = new Intent(DeleteConfirmation.this, MainActivity.class);
@@ -73,8 +79,12 @@ public class DeleteConfirmation extends AppCompatActivity
                     servDb.deleteService(servToDelete.getServiceId());
                     startActivity(businessHomeIntent);
                 }
-                //else if came from editing user
-
+                else if (cameFrom.equals("userProfileIntent"))
+                {
+                    userDb.deleteUser(Session.getUser().getEmail());
+                    orderDb.deleteUserOrders(Session.getUser().getEmail());
+                    startActivity(mainActivityIntent);
+                }
             }
         });
     }
@@ -91,7 +101,10 @@ public class DeleteConfirmation extends AppCompatActivity
                 {
                     startActivity(businessHomeIntent);
                 }
-                //Else if from user
+                if (cameFrom.equals("userProfileIntent"))
+                {
+                    startActivity(userHomeIntent);
+                }
             }
         });
     }
