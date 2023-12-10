@@ -21,7 +21,7 @@ public class OrderDatabase
 
     public static void create(SQLiteDatabase db)
     {
-        String sql = "CREATE TABLE " + DatabaseVaribles.ORDER_TABLE + " (orderId INTEGER PRIMARY KEY AUTOINCREMENT, serviceId INTEGER NOT NULL, businessId TEXT, userId TEXT NOT NULL, FOREIGN KEY (serviceId) REFERENCES " + DatabaseVaribles.SERVICE_TABLE + " (serviceId), FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email), FOREIGN KEY (userId) REFERENCES " + DatabaseVaribles.USER_TABLE + " (email));";
+        String sql = "CREATE TABLE " + DatabaseVaribles.ORDER_TABLE + " (orderId INTEGER PRIMARY KEY AUTOINCREMENT, serviceId INTEGER NOT NULL, businessId TEXT, userId TEXT NOT NULL, FOREIGN KEY (serviceId) REFERENCES " + DatabaseVaribles.SERVICE_TABLE + " (serviceId) ON DELETE CASCADE, FOREIGN KEY (businessId) REFERENCES " + DatabaseVaribles.BUSINESS_TABLE + " (email) ON DELETE CASCADE, FOREIGN KEY (userId) REFERENCES " + DatabaseVaribles.USER_TABLE + " (email) ON DELETE CASCADE);";
         db.execSQL(sql);
     }
 
@@ -99,6 +99,14 @@ public class OrderDatabase
         SQLiteDatabase _db = db.getWritableDatabase();
         String sql = "INSERT INTO " + DatabaseVaribles.ORDER_TABLE + " (serviceId, businessId, userId) VALUES ('" + _order.getServiceId() + "','" + _order.getBusinessId() + "','" + _order.getUserId() + "');";
         _db.execSQL(sql);
+        _db.close();
+    }
+
+    public void deleteUserOrders(String userId)
+    {
+        SQLiteDatabase _db = db.getWritableDatabase();
+        String query = "DELETE FROM " + DatabaseVaribles.ORDER_TABLE + " WHERE userId = '"+userId+"';";
+        _db.execSQL(query);
         _db.close();
     }
 }

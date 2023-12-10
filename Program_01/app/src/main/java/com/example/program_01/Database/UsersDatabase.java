@@ -95,4 +95,20 @@ public class UsersDatabase
             return false;
         }
     }
+
+    public void deleteUser(String userId)
+    {
+        String query = "DELETE FROM " + DatabaseVaribles.USER_TABLE + " WHERE email = '" + userId +"';";
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        db.execSQL(query);
+        db.close();
+    }
+
+    public void updateUser(User _user)
+    {
+        SQLiteDatabase db = ctx.getWritableDatabase();
+        String query = "UPDATE " + DatabaseVaribles.USER_TABLE + " SET firstName = '" + _user.getFirstName() +"', lastName = '"+_user.getLastName()+"' WHERE email = '"+ _user.getEmail()+"';";
+        db.execSQL(query);
+        db.close();
+    }
 }

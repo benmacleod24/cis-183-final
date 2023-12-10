@@ -54,7 +54,7 @@ public class UserHome extends AppCompatActivity {
 
         btn_j_menu_home = findViewById(R.id.btn_v_uh_home);
         btn_j_menu_orders = findViewById(R.id.btn_v_uh_order);
-        btn_j_menu_profile = findViewById(R.id.btn_v_uh_home);
+        btn_j_menu_profile = findViewById(R.id.btn_v_uh_profile);
 
         onEmergencyClick();
         onServiceClick();
@@ -84,6 +84,16 @@ public class UserHome extends AppCompatActivity {
         btn_j_menu_home.setOnClickListener(view -> {
             Intent userHomeIntent = new Intent(UserHome.this, UserHome.class);
             startActivity(userHomeIntent);
+        });
+
+        btn_j_menu_orders.setOnClickListener(view -> {
+            Intent userOrdersIntent = new Intent(UserHome.this, UserOrders.class);
+            startActivity(userOrdersIntent);
+        });
+
+        btn_j_menu_profile.setOnClickListener(view -> {
+            Intent profileIntent = new Intent(UserHome.this, UserProfile.class);
+            startActivity(profileIntent);
         });
     }
 }
