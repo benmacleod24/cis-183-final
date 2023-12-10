@@ -109,4 +109,12 @@ public class OrderDatabase
         _db.execSQL(query);
         _db.close();
     }
+
+    public void deleteOrder(int orderId)
+    {
+        SQLiteDatabase _db = db.getWritableDatabase();
+        String query = "DELETE FROM " + DatabaseVaribles.ORDER_TABLE + " WHERE orderId = '"+orderId+"';";
+        _db.execSQL(query);
+        _db.close();
+    }
 }
