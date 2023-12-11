@@ -21,7 +21,7 @@ public class ServiceList extends AppCompatActivity {
     ServiceDatabase serviceDb;
     ListView listView;
     ImageView btn_j_sl_back;
-    Intent emergencyPageIntent;
+    Intent userHomeIntent;
     ServiceListAdaptor adaptor;
     ArrayList<Service> listOfServices;
 
@@ -36,7 +36,7 @@ public class ServiceList extends AppCompatActivity {
 
         listView = findViewById(R.id.lv_serviceLs_list);
         btn_j_sl_back = findViewById(R.id.btn_v_sl_back);
-        emergencyPageIntent = new Intent(ServiceList.this, EmergencyPage.class);
+        userHomeIntent = new Intent(ServiceList.this, UserHome.class);
 
         fillAdaptor();
         backButtonClick();
@@ -65,7 +65,7 @@ public class ServiceList extends AppCompatActivity {
             public void onClick(View v)
             {
                 Log.d("Button Press", "Moving to Emergency Page from Service List Page");
-                startActivity(emergencyPageIntent);
+                startActivity(userHomeIntent);
             }
         });
     }
