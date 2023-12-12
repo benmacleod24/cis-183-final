@@ -23,6 +23,7 @@ public class editBusinessProfile extends AppCompatActivity
     EditText et_j_ebp_password;
     Button btn_j_ebp_saveChanges;
     Button btn_j_ebp_deleteBusiness;
+    Button btn_j_ebp_signOut;
     ImageView btn_j_ebp_seeOrders;
     ImageView btn_j_ebp_businessHome;
     TextView tv_j_ebp_error;
@@ -52,6 +53,7 @@ public class editBusinessProfile extends AppCompatActivity
         btn_j_ebp_deleteBusiness = findViewById(R.id.btn_v_ebp_deleteBusiness);
         btn_j_ebp_seeOrders = findViewById(R.id.btn_v_ebp_seeOrders);
         btn_j_ebp_businessHome = findViewById(R.id.btn_v_ebp_businessHome);
+        btn_j_ebp_signOut = findViewById(R.id.btn_v_ebp_signOut);
         tv_j_ebp_error = findViewById(R.id.tv_v_ebp_error);
 
         //INTENTS
@@ -69,6 +71,7 @@ public class editBusinessProfile extends AppCompatActivity
         businessHomeButtonClick();
         seeOrdersButtonClick();
         deleteBusinessButtonClick();
+        signOutButtonClick();
     }
 
     public void fillTextBoxes()
@@ -146,6 +149,19 @@ public class editBusinessProfile extends AppCompatActivity
             {
                 Log.d("Button Pressed:", "=====See Orders (EBP) Button Pressed=====");
                 startActivity(seeOrdersIntent);
+            }
+        });
+    }
+
+    public void signOutButtonClick()
+    {
+        btn_j_ebp_signOut.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Press", "Signing Out (Business)");
+                startActivity(mainActivityIntent);
             }
         });
     }

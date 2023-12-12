@@ -21,6 +21,7 @@ public class UserProfile extends AppCompatActivity
     UsersDatabase userdb;
     Button btn_delete;
     Button btn_update;
+    Button btn_signOut;
     ImageView btn_j_up_order;
     ImageView btn_j_up_home;
     User user;
@@ -31,6 +32,7 @@ public class UserProfile extends AppCompatActivity
     Intent deleteConfirmationIntent;
     Intent seeOrdersIntent;
     Intent userHomeIntent;
+    Intent mainActivityIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,6 +47,7 @@ public class UserProfile extends AppCompatActivity
         deleteConfirmationIntent = new Intent(UserProfile.this, DeleteConfirmation.class);
         seeOrdersIntent = new Intent(UserProfile.this, UserOrders.class);
         userHomeIntent = new Intent(UserProfile.this, UserHome.class);
+        mainActivityIntent = new Intent(UserProfile.this, MainActivity.class);
 
         setupElements();
     }
@@ -58,12 +61,14 @@ public class UserProfile extends AppCompatActivity
         inp_password = findViewById(R.id.inp_v_up_password);
         btn_j_up_order = findViewById(R.id.btn_v_up_order);
         btn_j_up_home = findViewById(R.id.btn_v_up_home);
+        btn_signOut = findViewById(R.id.btn_v_up_signOut);
 
         setupData();
         onDelete();
         onUpdate();
         onSeeOrders();
         onUserHome();
+        onSignOut();
     }
 
     private void setupData()
@@ -119,6 +124,19 @@ public class UserProfile extends AppCompatActivity
             {
                 Log.d("Button Press", "Moving to User Home");
                 startActivity(userHomeIntent);
+            }
+        });
+    }
+
+    private void onSignOut()
+    {
+        btn_signOut.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("Button Press", "Signing out (User)");
+                startActivity(mainActivityIntent);
             }
         });
     }
